@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_main"
+    tools:context=".fragments.MainActivity">
+
+    <EditText
+        android:id="@+id/edt_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Input, size, please"
+        android:inputType="numberSigned"
+        android:lines="1"
+        android:text="100" />
+
+
+    <fragment
+        android:id="@+id/fragment_collections"
+        android:name="com.example.alextarasyuk.collectionsandmaps.fragments.ListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_maps"
+        android:name="com.example.alextarasyuk.collectionsandmaps.fragments.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </fragment>
+
+    <Button
+        android:id="@+id/btn_calculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="calculate" />
+
+
+
+
+</LinearLayout>
