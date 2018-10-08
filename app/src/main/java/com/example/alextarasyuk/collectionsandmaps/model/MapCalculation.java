@@ -9,10 +9,9 @@ import java.util.concurrent.ExecutionException;
 
 import timber.log.Timber;
 
-public class MapCalculation implements ICalculation{
+public class MapCalculation implements ICalculation {
 
-    Map<Integer, Integer> map;
-
+    private Map<Integer, Integer> map;
 
 
     public MapCalculation(Map<Integer, Integer> map) {
@@ -45,7 +44,7 @@ public class MapCalculation implements ICalculation{
 
     @Override
     public Queue<Long> calculateMap() throws ExecutionException, InterruptedException {
-        Queue<Long> longs=new PriorityQueue<>();
+        Queue<Long> longs = new PriorityQueue<>();
         longs.add(calculateAddNewElementToMap());
         longs.add(calculateFindElementInMapByKey());
         longs.add(calculateRemoveElementInMapByKey());

@@ -62,6 +62,7 @@ public class MapFragment extends Fragment  {
 
         View view = inflater.inflate(R.layout.fragment_map, container, false);
         unbinder=ButterKnife.bind(this, view);
+        presenter=Presenter.createPresenter();
         return view;
     }
 

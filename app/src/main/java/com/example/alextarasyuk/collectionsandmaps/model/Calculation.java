@@ -17,18 +17,30 @@ import java.util.TreeMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class Calculation {
+public final class Calculation {
 
     private ICalculation calculation;
     private Presenter presenter;
-
+    private static Calculation instatce;
     private List<Integer> arrayList;
     private List<Integer> linkedList;
     private List<Integer> writeOnWriteLinkedList;
     private Map<Integer, Integer> hashMap;
     private Map<Integer, Integer> treeMap;
-
     private int size;
+
+    private Calculation() {
+    }
+    public static synchronized  Calculation  createInstance(){
+        if (instatce!=null){
+            return instatce;
+        }
+        return new Calculation();
+    }
+
+
+
+
 
 
     private void initializeMap() {
@@ -45,7 +57,7 @@ public class Calculation {
     }
 
     void initialzeList() {
-        presenter = new Presenter();
+        presenter = Presenter.createPresenter();
 
         this.size = presenter.getSize();
         arrayList = new ArrayList<>();

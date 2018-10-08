@@ -93,7 +93,7 @@ public class ListFragment extends Fragment implements IViewInterface {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_collection, container, false);
         unbinder = ButterKnife.bind(this, rootView);
-        presenter = new Presenter();
+        presenter = Presenter.createPresenter();
         longQueue = presenter.getLongQueueList();
         return rootView;
     }

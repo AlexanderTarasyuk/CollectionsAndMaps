@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements IViewInterface {
         ButterKnife.bind(this);
 
 
-        presenter = new Presenter();
+        presenter = Presenter.createPresenter();
         size = Integer.valueOf(editText.getText().toString().trim());
 
         if (BuildConfig.DEBUG) {

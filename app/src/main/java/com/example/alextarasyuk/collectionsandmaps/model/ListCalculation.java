@@ -13,8 +13,8 @@ import timber.log.Timber;
 
 public class ListCalculation implements ICalculation {
 
-    List list;
-    Queue<Long> permlongQueue;
+    private List<Integer> list;
+    private Queue<Long> permlongQueue;
 
     public ListCalculation(List list) {
         this.list = list;
@@ -51,7 +51,7 @@ public class ListCalculation implements ICalculation {
 
     public long calculateArrayListInsertAtTheMiddle() throws ExecutionException, InterruptedException {
         InsertInList myAsynkTask2 = new InsertInList();
-        myAsynkTask2.execute((list.size() % 2));
+        myAsynkTask2.execute((list.size() /2));
         return myAsynkTask2.get();
     }
 

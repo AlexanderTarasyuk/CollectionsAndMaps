@@ -11,16 +11,28 @@ import com.example.alextarasyuk.collectionsandmaps.model.ICalculation;
 import java.util.Queue;
 import java.util.concurrent.ExecutionException;
 
-public class Presenter implements MainActivityInterface {
+public final class Presenter implements MainActivityInterface {
 
 
     private IViewInterface iViewInterface;
-
+    private static Presenter presenter;
     private int size;
     private Calculation calculation;
 
     private Queue<Long> longQueueList;
     private Queue<Long> longQueueMap;
+
+    private Presenter() {
+    }
+
+    public static synchronized Presenter createPresenter(){
+        if (presenter!=null){
+            return presenter;
+        }
+        return new Presenter();
+    }
+
+
 
     public Queue<Long> getLongQueueList() {
         return longQueueList;
@@ -31,7 +43,7 @@ public class Presenter implements MainActivityInterface {
     }
 
     public void calculatePresenter() {
-        calculation = new Calculation();
+        calculation = Calculation.createInstance();
         try {
             longQueueList = calculation.getResultQueueList();
             longQueueMap = calculation.getResultQueueMap();
