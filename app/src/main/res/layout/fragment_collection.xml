@@ -22,50 +22,50 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="name"
+                android:text="@string/nameTable"
                 android:visibility="visible" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="insert at the beginning" />
+                android:text="@string/insert_at_the_beginning" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="insert at the middle" />
+                android:text="@string/insert_at_the_middle" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="insert at the end" />
+                android:text="@string/insert_at_the_end" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="find element" />
+                android:text="@string/find_element" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="delete at the beginning" />
+                android:text="@string/delete_at_the_beginning" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="delete at the middle" />
+                android:text="@string/delete_at_the_middle" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="dekete at the end" />
+                android:text="@string/dekete_at_the_end" />
         </TableRow>
 
         <TableRow>
@@ -75,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="LinkedList"
+                android:text="@string/linkedlist"
                 android:visibility="visible" />
 
             <TextView
@@ -134,7 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="ArrayList"
+                android:text="@string/arraylist"
                 android:visibility="visible" />
 
             <TextView
@@ -193,7 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Copy_on_write_arList"
+                android:text="@string/copy_on_write_arlist"
                 android:visibility="visible" />
 
             <TextView

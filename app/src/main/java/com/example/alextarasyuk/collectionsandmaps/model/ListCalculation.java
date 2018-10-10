@@ -2,63 +2,45 @@ package com.example.alextarasyuk.collectionsandmaps.model;
 
 import android.os.AsyncTask;
 
-import java.util.Collections;
+import com.example.alextarasyuk.collectionsandmaps.presenter.Presenter;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 import timber.log.Timber;
 
-public class ListCalculation implements ICalculation {
+public class ListCalculation {
+    Presenter presenter;
+
 
     private List<Integer> list;
-    private Queue<Long> permlongQueue;
 
-    public ListCalculation(List list) {
+    public ListCalculation(List<Integer> list) {
         this.list = list;
-        permlongQueue = new PriorityQueue<>();
     }
 
 
-    @Override
-    public Queue<Long> calculateList() throws ExecutionException, InterruptedException {
-        Queue<Long> longQueue = new PriorityQueue<>();
-        longQueue.add(calculateArrrayListInsertAtTheBeginning());
-        longQueue.add(calculateArrayListInsertAtTheMiddle());
-        longQueue.add(calculateArrayListInsertAtTheEnd());
-        longQueue.add(calculateFindTheIndexOfElement());
-        longQueue.add(calculateRemoveFirstElement());
-        longQueue.add(calculateRemoveMiddleElement());
-        longQueue.add(calculateRemoveLastElement());
-        permlongQueue.addAll(longQueue);
-        return longQueue;
-
-    }
-
-    @Override
-    public Queue<Long> calculateMap() {
-        return null;
-
-    }
-
-    public long calculateArrrayListInsertAtTheBeginning() throws ExecutionException, InterruptedException {
+    public String calculateListInsertAtTheBeginning() throws ExecutionException, InterruptedException {
         InsertInList myAsynkTask = new InsertInList();
         myAsynkTask.execute(0);
-        return myAsynkTask.get();
+        return String.valueOf(myAsynkTask.get());
     }
 
-    public long calculateArrayListInsertAtTheMiddle() throws ExecutionException, InterruptedException {
+    public String calculateListInsertAtTheMiddle() throws ExecutionException, InterruptedException {
         InsertInList myAsynkTask2 = new InsertInList();
-        myAsynkTask2.execute((list.size() /2));
-        return myAsynkTask2.get();
+        myAsynkTask2.execute((list.size() / 2));
+        return String.valueOf(myAsynkTask2.get());
     }
 
-    public long calculateArrayListInsertAtTheEnd() throws ExecutionException, InterruptedException {
+    public String calculateListInsertAtTheEnd() throws ExecutionException, InterruptedException {
         InsertInList myAsynkTask3 = new InsertInList();
         myAsynkTask3.execute(list.size() - 1);
-        return myAsynkTask3.get();
+
+        return String.valueOf(myAsynkTask3.get());
     }
 
     public long calculateFindTheIndexOfElement() throws ExecutionException, InterruptedException {
@@ -67,25 +49,24 @@ public class ListCalculation implements ICalculation {
         return myAsynkTask4.get();
     }
 
-    public long calculateRemoveFirstElement() throws ExecutionException, InterruptedException {
+    public String calculateRemoveFirstElement() throws ExecutionException, InterruptedException {
         DeleteElementInList myAsynkTask5 = new DeleteElementInList();
         myAsynkTask5.execute(0);
-        return myAsynkTask5.get();
+        return String.valueOf(myAsynkTask5.get());
     }
 
     public long calculateRemoveMiddleElement() throws ExecutionException, InterruptedException {
 
         DeleteElementInList myAsynkTask6 = new DeleteElementInList();
-        myAsynkTask6.execute(list.size() % 2);
+        myAsynkTask6.execute(list.size() / 2);
         return myAsynkTask6.get();
     }
 
-
-    public long calculateRemoveLastElement() throws ExecutionException, InterruptedException {
+    public String calculateRemoveLastElement() throws ExecutionException, InterruptedException {
 
         DeleteElementInList myAsynkTask7 = new DeleteElementInList();
         myAsynkTask7.execute(list.size() - 1);
-        return myAsynkTask7.get();
+        return String.valueOf(myAsynkTask7.get());
     }
 
 
@@ -100,7 +81,14 @@ public class ListCalculation implements ICalculation {
             return (System.nanoTime() - temp);
         }
 
+        @Override
+        protected void onPostExecute(Long aLong) {
+            String temp=String.valueOf(aLong);
+           if(list instanceof ArrayList) presenter.getResultArrayList(String.valueOf(aLong));
+           if (list instanceof LinkedList) presenter.getResultLinkedList()
 
+            }
+        }
     }
 
     public class FindElementInList extends AsyncTask<Integer, Void, Long> {
@@ -115,6 +103,10 @@ public class ListCalculation implements ICalculation {
             return (System.nanoTime() - temp);
         }
 
+        @Override
+        protected void onPostExecute(Long aLong) {
+            presenter.getResult(String.valueOf(aLong));
+        }
     }
 
     public class DeleteElementInList extends AsyncTask<Integer, Void, Long> {

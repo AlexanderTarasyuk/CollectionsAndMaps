@@ -3,4 +3,22 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_calculate">calculate</string>
+    <string name="input_size_please">Input, size, please</string>
+    <string name="_100">100</string>
+    <string name="nameTable">name</string>
+    <string name="insert_at_the_beginning">insert at the beginning</string>
+    <string name="insert_at_the_end">insert at the end</string>
+    <string name="insert_at_the_middle">insert at the middle</string>
+    <string name="find_element">find element</string>
+    <string name="delete_at_the_beginning">delete at the beginning</string>
+    <string name="delete_at_the_middle">delete at the middle</string>
+    <string name="dekete_at_the_end">dekete at the end</string>
+    <string name="linkedlist">LinkedList</string>
+    <string name="arraylist">ArrayList</string>
+    <string name="copy_on_write_arlist">Copy_on_write_arList</string>
+    <string name="name_map">name_map</string>
+    <string name="adding_new">Adding new</string>
+    <string name="search_by_key">Search by key</string>
+    <string name="removing">Removing</string>
 </resources>

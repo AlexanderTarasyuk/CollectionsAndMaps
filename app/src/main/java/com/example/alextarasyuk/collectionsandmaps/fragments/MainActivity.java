@@ -15,9 +15,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import timber.log.Timber;
 
-public class MainActivity extends AppCompatActivity implements IViewInterface {
+public class MainActivity extends AppCompatActivity  {
 
-    Presenter presenter;
+    private Presenter presenter;
 
 
     @BindView(R.id.btn_calculate)
@@ -30,42 +30,39 @@ public class MainActivity extends AppCompatActivity implements IViewInterface {
     MapFragment mapFragment;
 
 
-    public Bundle bundle;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        presenter = new Presenter();
 
-
-        presenter = Presenter.createPresenter();
-        size = Integer.valueOf(editText.getText().toString().trim());
 
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
 
+        presenter.attachView(this);
     }
 
     @OnClick(R.id.btn_calculate)
     void calculate(View view) {
-        presenter.calculatePresenter();
-        presenter.getSize();
+        presenter.calculateTableContentInPresenter(Integer.valueOf(editText.getText().toString()));
 
         editText.setText("");
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        presenter.dettachView();
 
     }
 
 
-    @Override
     public int getSize() {
         return Integer.valueOf(editText.getText().toString().trim());
     }
+
+
 }

@@ -21,7 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class MapFragment extends Fragment  {
+public class MapFragment extends Fragment {
 
 
     @BindView(R.id.tv_add_new_hash_map)
@@ -36,13 +36,8 @@ public class MapFragment extends Fragment  {
     TextView tvRemovingTreeMap;
     @BindView(R.id.tv_select_by_key_tree_map)
     TextView tvSelectTreeMap;
-
     Queue<Long> queue;
     Presenter presenter;
-
-
-
-
     Unbinder unbinder;
 
     public MapFragment() {
@@ -61,8 +56,9 @@ public class MapFragment extends Fragment  {
 
 
         View view = inflater.inflate(R.layout.fragment_map, container, false);
-        unbinder=ButterKnife.bind(this, view);
-        presenter=Presenter.createPresenter();
+        unbinder = ButterKnife.bind(this, view);
+        presenter = Presenter.createPresenter();
+        queue = presenter.getLongQueueMap();
         return view;
     }
 
@@ -73,12 +69,16 @@ public class MapFragment extends Fragment  {
 
     }
 
-    public  void calculate(){
+    public void setView() {
+
+        tvAddHashMap.setText(String.valueOf(queue.poll()));
+        tvSelectHashMap.setText(String.valueOf(queue.poll()));
+        tvRemovingHashMap.setText(String.valueOf(queue.poll()));
+        tvAddNewTreeMap.setText(String.valueOf(queue.poll()));
+        tvSelectTreeMap.setText(String.valueOf(queue.poll()));
+        tvRemovingTreeMap.setText(String.valueOf(queue.poll()));
 
     }
-
-
-
 
 
 }

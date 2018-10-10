@@ -2,55 +2,40 @@ package com.example.alextarasyuk.collectionsandmaps.model;
 
 import android.os.AsyncTask;
 
+import java.util.Collection;
 import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.concurrent.ExecutionException;
 
 import timber.log.Timber;
 
-public class MapCalculation implements ICalculation {
+public class MapCalculation {
 
-    private Map<Integer, Integer> map;
+    private Map map;
 
-
-    public MapCalculation(Map<Integer, Integer> map) {
+    public MapCalculation(Map map) {
         this.map = map;
     }
 
-    public long calculateAddNewElementToMap() throws ExecutionException, InterruptedException {
+    public String calculateAddNewElementToMap() throws ExecutionException, InterruptedException {
 
         AddNewElementToMap myAsynkTask4 = new AddNewElementToMap();
         myAsynkTask4.execute();
-        return myAsynkTask4.get();
+
+        return String.valueOf(myAsynkTask4.get());
     }
 
-    public long calculateFindElementInMapByKey() throws ExecutionException, InterruptedException {
+    public String calculateFindElementInMapByKey() throws ExecutionException, InterruptedException {
         FindElementInMapByKey findElementInMap = new FindElementInMapByKey();
         findElementInMap.execute();
-        return findElementInMap.get();
+        return String.valueOf(findElementInMap.get());
     }
 
-    public long calculateRemoveElementInMapByKey() throws ExecutionException, InterruptedException {
+    public String calculateRemoveElementInMapByKey() throws ExecutionException, InterruptedException {
         RemoveElementInMap removeElementInMap = new RemoveElementInMap();
         removeElementInMap.execute();
-        return removeElementInMap.get();
+        return String.valueOf(removeElementInMap.get());
     }
 
-    @Override
-    public Queue<Long> calculateList() throws ExecutionException, InterruptedException {
-        return null;
-    }
-
-    @Override
-    public Queue<Long> calculateMap() throws ExecutionException, InterruptedException {
-        Queue<Long> longs = new PriorityQueue<>();
-        longs.add(calculateAddNewElementToMap());
-        longs.add(calculateFindElementInMapByKey());
-        longs.add(calculateRemoveElementInMapByKey());
-        return longs;
-
-    }
 
     public class AddNewElementToMap extends AsyncTask<Void, Void, Long> {
 

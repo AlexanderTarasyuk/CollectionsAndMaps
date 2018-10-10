@@ -9,13 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.alextarasyuk.collectionsandmaps.model.Calculation;
 import com.example.alextarasyuk.collectionsandmaps.R;
 import com.example.alextarasyuk.collectionsandmaps.presenter.Presenter;
 
-import java.util.List;
 import java.util.Queue;
-import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,7 +22,7 @@ import butterknife.Unbinder;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListFragment extends Fragment implements IViewInterface {
+public class ListFragment extends Fragment {
 
 
     @BindView(R.id.tv_insert_atBeginning_arList)
@@ -75,9 +72,12 @@ public class ListFragment extends Fragment implements IViewInterface {
 
     private Presenter presenter;
     private Queue<Long> longQueue;
+    private Unbinder unbinder;
 
+    public static ListFragment newInstance() {
+        return new ListFragment();
+    }
 
-    Unbinder unbinder;
 
     public ListFragment() {
         // Required empty public constructor
@@ -104,37 +104,89 @@ public class ListFragment extends Fragment implements IViewInterface {
         unbinder.unbind();
     }
 
-    public void calculate() {
 
-            tvInsertAtBeginning.setText(String.valueOf(longQueue.poll()));
-            tvInsertAtMiddle.setText(String.valueOf(longQueue.poll()));
-            tvInsertAtEnd.setText(String.valueOf(longQueue.poll()));
-            tvFindElement.setText(String.valueOf(longQueue.poll()));
-            tvDeleteFirst.setText(String.valueOf(longQueue.poll()));
-            tvDeleteMiddle.setText(String.valueOf(longQueue.poll()));
-            tvDeleteLast.setText(String.valueOf(longQueue.poll()));
 
-            tvInsertAtBeginningLinkedList.setText(String.valueOf(longQueue.poll()));
-            tvInsertAtMiddleLinkList.setText(String.valueOf(longQueue.poll()));
-            tvInsertAtEndLinkList.setText(String.valueOf(longQueue.poll()));
-            tvFindElementLinkList.setText(String.valueOf(longQueue.poll()));
-            tvDeleteFirstLinkList.setText(String.valueOf(longQueue.poll()));
-            tvDeleteMiddleLinkList.setText(String.valueOf(longQueue.poll()));
-            tvDeleteLastLinkList.setText(String.valueOf(longQueue.poll()));
-
-            tvInsertAtBeginningCopyOnWriteList.setText(String.valueOf(longQueue.poll()));
-            tvInsertAtMiddleCopyOnWriteList.setText(String.valueOf(longQueue.poll()));
-            tvInsertAtEndCopyOnWriteList.setText((String.valueOf(longQueue.poll())));
-            tvFindElementCopyOnWriteList.setText(String.valueOf(longQueue.poll()));
-            tvDeleteFirstCopyOnWriteList.setText(String.valueOf(longQueue.poll()));
-            tvDeleteMiddleCopyOnWriteList.setText((String.valueOf(longQueue.poll())));
-            tvDeleteLastCopyOnWriteList.setText(String.valueOf(longQueue.poll()));
-
+    public void setTvInsertAtBeginning(String valueOfCalculation) {
+        tvInsertAtBeginning.setText(valueOfCalculation);
     }
 
+    public void setTvInsertAtMiddle(String valueOfCalculation) {
+       tvInsertAtMiddle.setText(valueOfCalculation);
+    }
 
-    @Override
-    public int getSize() {
-        return 0;
+    public void setTvInsertAtEnd(String valueOfCalculation) {
+       tvInsertAtEnd.setText(valueOfCalculation);
+    }
+
+    public void setTvFindElement(String valueOfCalculation) {
+        this.tvFindElement = tvFindElement;
+    }
+
+    public void setTvDeleteFirst(String valueOfCalculation {
+        this.tvDeleteFirst = tvDeleteFirst;
+    }
+
+    public void setTvDeleteMiddle(String valueOfCalculation) {
+        this.tvDeleteMiddle = tvDeleteMiddle;
+    }
+
+    public void setTvDeleteLast(String valueOfCalculation) {
+        this.tvDeleteLast = tvDeleteLast;
+    }
+
+    public void setTvInsertAtBeginningLinkedList(String valueOfCalculation) {
+        this.tvInsertAtBeginningLinkedList = tvInsertAtBeginningLinkedList;
+    }
+
+    public void setTvInsertAtMiddleLinkList(String valueOfCalculation) {
+        this.tvInsertAtMiddleLinkList = tvInsertAtMiddleLinkList;
+    }
+
+    public void setTvInsertAtEndLinkList(String valueOfCalculation) {
+        this.tvInsertAtEndLinkList = tvInsertAtEndLinkList;
+    }
+
+    public void setTvFindElementLinkList(String valueOfCalculation) {
+        this.tvFindElementLinkList = tvFindElementLinkList;
+    }
+
+    public void setTvDeleteFirstLinkList(String valueOfCalculation) {
+        this.tvDeleteFirstLinkList = tvDeleteFirstLinkList;
+    }
+
+    public void setTvDeleteMiddleLinkList(String valueOfCalculation) {
+        this.tvDeleteMiddleLinkList = tvDeleteMiddleLinkList;
+    }
+
+    public void setTvDeleteLastLinkList(String valueOfCalculation) {
+        this.tvDeleteLastLinkList = tvDeleteLastLinkList;
+    }
+
+    public void setTvInsertAtBeginningCopyOnWriteList(String valueOfCalculation) {
+        this.tvInsertAtBeginningCopyOnWriteList = tvInsertAtBeginningCopyOnWriteList;
+    }
+
+    public void setTvInsertAtMiddleCopyOnWriteList(String valueOfCalculation) {
+        this.tvInsertAtMiddleCopyOnWriteList = tvInsertAtMiddleCopyOnWriteList;
+    }
+
+    public void setTvInsertAtEndCopyOnWriteList(String valueOfCalculation) {
+        this.tvInsertAtEndCopyOnWriteList = tvInsertAtEndCopyOnWriteList;
+    }
+
+    public void setTvFindElementCopyOnWriteList(String valueOfCalculation) {
+        this.tvFindElementCopyOnWriteList = tvFindElementCopyOnWriteList;
+    }
+
+    public void setTvDeleteFirstCopyOnWriteList(String valueOfCalculation) {
+        this.tvDeleteFirstCopyOnWriteList = tvDeleteFirstCopyOnWriteList;
+    }
+
+    public void setTvDeleteMiddleCopyOnWriteList(String valueOfCalculation) {
+        this.tvDeleteMiddleCopyOnWriteList = tvDeleteMiddleCopyOnWriteList;
+    }
+
+    public void setTvDeleteLastCopyOnWriteList(String valueOfCalculation) {
+        this.tvDeleteLastCopyOnWriteList = tvDeleteLastCopyOnWriteList;
     }
 }

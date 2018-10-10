@@ -19,26 +19,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="name_map"
+                android:text="@string/name_map"
                 android:visibility="visible" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Adding new" />
+                android:text="@string/adding_new" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Search by key" />
+                android:text="@string/search_by_key" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Removing" />
+                android:text="@string/removing" />
 
 
         </TableRow>
