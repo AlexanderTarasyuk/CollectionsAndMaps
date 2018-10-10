@@ -1,5 +1,8 @@
 package com.example.alextarasyuk.collectionsandmaps.presenter;
 
+
+import com.example.alextarasyuk.collectionsandmaps.fragments.IListFragment;
+
 import com.example.alextarasyuk.collectionsandmaps.fragments.ListFragment;
 import com.example.alextarasyuk.collectionsandmaps.fragments.MainActivity;
 import com.example.alextarasyuk.collectionsandmaps.fragments.MapFragment;
@@ -16,9 +19,11 @@ import java.util.TreeMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutionException;
 
+
 public final class Presenter {
 
     private MainActivity mainActivity;
+    IListFragment iListFragment;
     private ListFragment listFragment;
     private MapFragment mapFragment;
     private List<Integer> arrayList;
@@ -67,14 +72,12 @@ public final class Presenter {
     public void calculateTableContentInPresenter(Integer size) {
         initialzeList(size);
         initializeMap(size);
-        ListCalculation listCalculationArrayList = new ListCalculation(arrayList);
-        ListCalculation listCalculationLinkedList = new ListCalculation(linkedList);
-        ListCalculation listCalculationCopyOnWriteList = new ListCalculation(writeOnWriteLinkedList);
+        iListFragment = new ListFragment();
+        listCalculation = new ListCalculation(arrayList, this);
+
         try {
 
-            calculateContentInRepository(listCalculationArrayList);
-            calculateContentInRepository(listCalculationLinkedList);
-            calculateContentInRepository(listCalculationCopyOnWriteList);
+            calculateContentInRepositoryArrayList(this.arrayList, this);
 
 
         } catch (ExecutionException e) {
@@ -85,22 +88,16 @@ public final class Presenter {
 
     }
 
-    private void calculateContentInRepository(ListCalculation listCalculation) throws ExecutionException, InterruptedException {
-        listCalculation.calculateListInsertAtTheBeginning();
-        listCalculation.calculateListInsertAtTheMiddle();
-        listCalculation.calculateListInsertAtTheEnd();
-        listCalculation.calculateFindTheIndexOfElement();
-        listCalculation.calculateRemoveFirstElement();
-        listCalculation.calculateRemoveMiddleElement();
-        listCalculation.calculateRemoveLastElement();
+    private void calculateContentInRepositoryArrayList(List arrayList, Presenter presenter) throws ExecutionException, InterruptedException {
+        listCalculation.calculateInsertAtTheBeginningListArrayList(arrayList);
+        listCalculation.calculateListInsertAtTheMiddleArrayList(arrayList);
+        listCalculation.calculateListInsertAtTheEndArrayList(arrayList);
+        listCalculation.calculateFindTheIndexOfElement(arrayList);
+        listCalculation.calculateRemoveFirstElementArrayList(arrayList);
+        listCalculation.calculateRemoveMiddleElementArrayList(arrayList);
+        listCalculation.calculateRemoveLastElementatArrayList(arrayList);
     }
 
-
-
-
-    public void getResult(String s) {
-        listFragment.setTvInsertAtBeginning(s);
-    }
 
     public void attachView(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -112,5 +109,38 @@ public final class Presenter {
         mainActivity = null;
         mapFragment = null;
         listFragment = null;
+    }
+
+    public void getContentAddAtTheBeginningArList(String s) {
+        iListFragment.setTvInsertAtBeginningArrayList(s);
+    }
+
+    public void getContentAddAtTheMiddleArList(String s) {
+        iListFragment.setTvInsertAtMiddleArrayList(s);
+    }
+
+    public void getContentFindElementArrayList(String s) {
+        iListFragment.setTvFindElementArrayList(s);
+    }
+
+    public void getContentOfDeleteFirstElementArrayList(String s) {
+        iListFragment.setTvDeleteFirstArrayList(s);
+    }
+
+    public void getContentOfDeleteLastElementArrayList(String s) {
+        iListFragment.setTvDeleteLastElementArrayList(s);
+    }
+
+
+    public void getContentAddatTheEndArrayList(String s) {
+        iListFragment.setTvInsertAtEndArrayList(s);
+    }
+
+    public void getContentAddAtTheBeginningLinkedList() {
+
+    }
+
+    public void getContentAddAtTheBeginningCopyOnWriteList(String s) {
+        iListFragment.setTvInsertAtBeginningCopyOnWriteList(s);
     }
 }

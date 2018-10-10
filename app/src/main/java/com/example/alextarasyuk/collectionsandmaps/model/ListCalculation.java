@@ -4,121 +4,140 @@ import android.os.AsyncTask;
 
 import com.example.alextarasyuk.collectionsandmaps.presenter.Presenter;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
-import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
-import timber.log.Timber;
-
 public class ListCalculation {
-    Presenter presenter;
 
+    private  Presenter  presenter;
+    private  List<Integer> list;
 
-    private List<Integer> list;
-
-    public ListCalculation(List<Integer> list) {
+    public ListCalculation(List<Integer> list, Presenter presenter) {
         this.list = list;
+        this.presenter = presenter;
     }
 
+    public   void  calculateInsertAtTheBeginningListArrayList(List<Integer> list) throws ExecutionException, InterruptedException {
 
-    public String calculateListInsertAtTheBeginning() throws ExecutionException, InterruptedException {
-        InsertInList myAsynkTask = new InsertInList();
-        myAsynkTask.execute(0);
-        return String.valueOf(myAsynkTask.get());
-    }
-
-    public String calculateListInsertAtTheMiddle() throws ExecutionException, InterruptedException {
-        InsertInList myAsynkTask2 = new InsertInList();
-        myAsynkTask2.execute((list.size() / 2));
-        return String.valueOf(myAsynkTask2.get());
-    }
-
-    public String calculateListInsertAtTheEnd() throws ExecutionException, InterruptedException {
-        InsertInList myAsynkTask3 = new InsertInList();
-        myAsynkTask3.execute(list.size() - 1);
-
-        return String.valueOf(myAsynkTask3.get());
-    }
-
-    public long calculateFindTheIndexOfElement() throws ExecutionException, InterruptedException {
-        FindElementInList myAsynkTask4 = new FindElementInList();
-        myAsynkTask4.execute(new Random().nextInt(100_000));
-        return myAsynkTask4.get();
-    }
-
-    public String calculateRemoveFirstElement() throws ExecutionException, InterruptedException {
-        DeleteElementInList myAsynkTask5 = new DeleteElementInList();
-        myAsynkTask5.execute(0);
-        return String.valueOf(myAsynkTask5.get());
-    }
-
-    public long calculateRemoveMiddleElement() throws ExecutionException, InterruptedException {
-
-        DeleteElementInList myAsynkTask6 = new DeleteElementInList();
-        myAsynkTask6.execute(list.size() / 2);
-        return myAsynkTask6.get();
-    }
-
-    public String calculateRemoveLastElement() throws ExecutionException, InterruptedException {
-
-        DeleteElementInList myAsynkTask7 = new DeleteElementInList();
-        myAsynkTask7.execute(list.size() - 1);
-        return String.valueOf(myAsynkTask7.get());
-    }
-
-
-    public class InsertInList extends AsyncTask<Integer, Void, Long> {
-
-
-        @Override
-        protected Long doInBackground(Integer... voids) {
-
-            long temp = System.nanoTime();
-            list.add(0, 1000);
-            return (System.nanoTime() - temp);
-        }
-
-        @Override
-        protected void onPostExecute(Long aLong) {
-            String temp=String.valueOf(aLong);
-           if(list instanceof ArrayList) presenter.getResultArrayList(String.valueOf(aLong));
-           if (list instanceof LinkedList) presenter.getResultLinkedList()
-
+        new AsyncTask<Void, Void, Long>() {
+            @Override
+            protected Long doInBackground(Void... voids) {
+                long temp = System.nanoTime();
+                list.add(0, 1000);
+                return (System.nanoTime() - temp);
             }
-        }
+
+            @Override
+            protected void onPostExecute(Long aLong) {
+               presenter.getContentAddAtTheBeginningArList(String.valueOf(aLong));
+            }
+        }.execute();
+
     }
 
-    public class FindElementInList extends AsyncTask<Integer, Void, Long> {
+    public  void calculateListInsertAtTheMiddleArrayList(List<Integer> list) {
+        new AsyncTask<Void, Void, Long>() {
+            @Override
+            protected Long doInBackground(Void... voids) {
+                long temp = System.nanoTime();
+                list.add(list.size() / 2, 1000);
+                return (System.nanoTime() - temp);
+            }
 
+            @Override
+            protected void onPostExecute(Long aLong) {
+                presenter.getContentAddAtTheMiddleArList(String.valueOf(aLong));
+            }
+        }.execute();
+    }
+
+    public  void calculateListInsertAtTheEndArrayList(List<Integer> list) {
+
+        new AsyncTask<Void, Void, Long>() {
+            @Override
+            protected Long doInBackground(Void... voids) {
+                long temp = System.nanoTime();
+                list.add(list.size()  -1, 1000);
+                return (System.nanoTime() - temp);
+            }
+
+            @Override
+            protected void onPostExecute(Long aLong) {
+                presenter.getContentAddatTheEndArrayList(String.valueOf(aLong));
+            }
+        }.execute();
+    }
+
+    public  void calculateFindTheIndexOfElement(List<Integer> list) {
+
+        new AsyncTask<Void, Void, Long>() {
+            @Override
+            protected Long doInBackground(Void... voids) {
+                long temp = System.nanoTime();
+                list.indexOf(100);
+                return (System.nanoTime() - temp);
+            }
+
+            @Override
+            protected void onPostExecute(Long aLong) {
+                presenter.getContentFindElementArrayList(String.valueOf(aLong));
+            }
+        }.execute();
+    }
+
+    public  void calculateRemoveFirstElementArrayList(List<Integer> list) {
+        new AsyncTask<Void, Void, Long>() {
+            @Override
+            protected Long doInBackground(Void... voids) {
+                long temp = System.nanoTime();
+                list.remove(1);
+                return (System.nanoTime() - temp);
+            }
+
+            @Override
+            protected void onPostExecute(Long aLong) {
+                presenter.getContentOfDeleteFirstElementArrayList(String.valueOf(aLong));
+            }
+        }.execute();
+    }
+
+    public  void calculateRemoveMiddleElementArrayList(List<Integer> list) {
+        new AsyncTask<Void, Void, Long>() {
         @Override
-        protected Long doInBackground(Integer... voids) {
-
-            Timber.d(list.getClass().getSimpleName() + "" + list.size() + " find " + voids[0]);
-
+        protected Long doInBackground(Void... voids) {
             long temp = System.nanoTime();
-            list.indexOf(voids[0]);
+            list.remove(list.size()/2);
             return (System.nanoTime() - temp);
         }
 
         @Override
         protected void onPostExecute(Long aLong) {
-            presenter.getResult(String.valueOf(aLong));
+            presenter.getContentOfDeleteLastElementArrayList(String.valueOf(aLong));
         }
+    }.execute();
     }
 
-    public class DeleteElementInList extends AsyncTask<Integer, Void, Long> {
+    public  void calculateRemoveLastElementatArrayList(List<Integer> list) {
+        new AsyncTask<Void, Void, Long>() {
+            @Override
+            protected Long doInBackground(Void... voids) {
+                long temp = System.nanoTime();
+                list.remove(list.size()-1);
+                return (System.nanoTime() - temp);
+            }
 
-        @Override
-        protected Long doInBackground(Integer... voids) {
-
-            Timber.d(list.getClass().getSimpleName() + "" + list.size() + " delete " + voids[0]);
-
-            long temp = System.nanoTime();
-            list.remove(voids[0]);
-            return (System.nanoTime() - temp);
-        }
+            @Override
+            protected void onPostExecute(Long aLong) {
+                presenter.getContentOfDeleteLastElementArrayList(String.valueOf(aLong));
+            }
+        }.execute();
     }
+
+
+
+
+
+
+
+
 }

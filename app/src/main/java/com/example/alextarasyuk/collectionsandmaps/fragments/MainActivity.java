@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     @OnClick(R.id.btn_calculate)
-    void calculate(View view) {
+    void calculateContenetOfTableafterButtonIsClicked(View view) {
         presenter.calculateTableContentInPresenter(Integer.valueOf(editText.getText().toString()));
 
         editText.setText("");

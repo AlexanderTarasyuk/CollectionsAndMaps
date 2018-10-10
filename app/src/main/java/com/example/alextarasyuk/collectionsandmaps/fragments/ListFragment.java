@@ -22,13 +22,13 @@ import butterknife.Unbinder;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListFragment extends Fragment {
+public class ListFragment extends Fragment implements IListFragment {
 
 
     @BindView(R.id.tv_insert_atBeginning_arList)
-    TextView tvInsertAtBeginning;
+    TextView tvInsertAtBeginningArrayList;
     @BindView(R.id.tv_insert_atMiddle_arList)
-    TextView tvInsertAtMiddle;
+    TextView tvInsertAtMiddleArrayList;
     @BindView(R.id.tv_insert_atEnd_arList)
     TextView tvInsertAtEnd;
     @BindView(R.id.tv_findElement_arList)
@@ -92,9 +92,8 @@ public class ListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_collection, container, false);
+        ButterKnife.bind(this, rootView);
         unbinder = ButterKnife.bind(this, rootView);
-        presenter = Presenter.createPresenter();
-        longQueue = presenter.getLongQueueList();
         return rootView;
     }
 
@@ -105,87 +104,107 @@ public class ListFragment extends Fragment {
     }
 
 
-
-    public void setTvInsertAtBeginning(String valueOfCalculation) {
-        tvInsertAtBeginning.setText(valueOfCalculation);
+    @Override
+    public void setTvInsertAtBeginningArrayList(String valueOfCalculation) {
+        tvInsertAtBeginningArrayList.setText(valueOfCalculation);
     }
 
-    public void setTvInsertAtMiddle(String valueOfCalculation) {
-       tvInsertAtMiddle.setText(valueOfCalculation);
+    @Override
+    public void setTvInsertAtMiddleArrayList(String valueOfCalculation) {
+        tvInsertAtMiddleArrayList.setText(valueOfCalculation);
     }
 
-    public void setTvInsertAtEnd(String valueOfCalculation) {
-       tvInsertAtEnd.setText(valueOfCalculation);
+    @Override
+    public void setTvInsertAtEndArrayList(String valueOfCalculation) {
+        tvInsertAtEnd.setText(valueOfCalculation);
     }
 
-    public void setTvFindElement(String valueOfCalculation) {
+    @Override
+    public void setTvFindElementArrayList(String valueOfCalculation) {
         this.tvFindElement = tvFindElement;
     }
 
-    public void setTvDeleteFirst(String valueOfCalculation {
+    @Override
+    public void setTvDeleteFirstArrayList(String valueOfCalculation) {
         this.tvDeleteFirst = tvDeleteFirst;
     }
 
+    @Override
     public void setTvDeleteMiddle(String valueOfCalculation) {
         this.tvDeleteMiddle = tvDeleteMiddle;
     }
 
-    public void setTvDeleteLast(String valueOfCalculation) {
+    @Override
+    public void setTvDeleteLastElementArrayList(String valueOfCalculation) {
         this.tvDeleteLast = tvDeleteLast;
     }
 
+    @Override
     public void setTvInsertAtBeginningLinkedList(String valueOfCalculation) {
         this.tvInsertAtBeginningLinkedList = tvInsertAtBeginningLinkedList;
     }
 
+    @Override
     public void setTvInsertAtMiddleLinkList(String valueOfCalculation) {
         this.tvInsertAtMiddleLinkList = tvInsertAtMiddleLinkList;
     }
 
+    @Override
     public void setTvInsertAtEndLinkList(String valueOfCalculation) {
         this.tvInsertAtEndLinkList = tvInsertAtEndLinkList;
     }
 
+    @Override
     public void setTvFindElementLinkList(String valueOfCalculation) {
         this.tvFindElementLinkList = tvFindElementLinkList;
     }
 
+    @Override
     public void setTvDeleteFirstLinkList(String valueOfCalculation) {
         this.tvDeleteFirstLinkList = tvDeleteFirstLinkList;
     }
 
+    @Override
     public void setTvDeleteMiddleLinkList(String valueOfCalculation) {
         this.tvDeleteMiddleLinkList = tvDeleteMiddleLinkList;
     }
 
+    @Override
     public void setTvDeleteLastLinkList(String valueOfCalculation) {
         this.tvDeleteLastLinkList = tvDeleteLastLinkList;
     }
 
+    @Override
     public void setTvInsertAtBeginningCopyOnWriteList(String valueOfCalculation) {
         this.tvInsertAtBeginningCopyOnWriteList = tvInsertAtBeginningCopyOnWriteList;
     }
 
+    @Override
     public void setTvInsertAtMiddleCopyOnWriteList(String valueOfCalculation) {
         this.tvInsertAtMiddleCopyOnWriteList = tvInsertAtMiddleCopyOnWriteList;
     }
 
+    @Override
     public void setTvInsertAtEndCopyOnWriteList(String valueOfCalculation) {
         this.tvInsertAtEndCopyOnWriteList = tvInsertAtEndCopyOnWriteList;
     }
 
+    @Override
     public void setTvFindElementCopyOnWriteList(String valueOfCalculation) {
         this.tvFindElementCopyOnWriteList = tvFindElementCopyOnWriteList;
     }
 
+    @Override
     public void setTvDeleteFirstCopyOnWriteList(String valueOfCalculation) {
         this.tvDeleteFirstCopyOnWriteList = tvDeleteFirstCopyOnWriteList;
     }
 
+    @Override
     public void setTvDeleteMiddleCopyOnWriteList(String valueOfCalculation) {
         this.tvDeleteMiddleCopyOnWriteList = tvDeleteMiddleCopyOnWriteList;
     }
 
+    @Override
     public void setTvDeleteLastCopyOnWriteList(String valueOfCalculation) {
         this.tvDeleteLastCopyOnWriteList = tvDeleteLastCopyOnWriteList;
     }
