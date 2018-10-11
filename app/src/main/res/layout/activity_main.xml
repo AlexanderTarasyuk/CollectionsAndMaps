@@ -2,27 +2,36 @@
 <LinearLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_main"
+    style="@style/ThemeOverlay.AppCompat.Light"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/ll_main"
-    tools:context=".fragments.MainActivity">
+    tools:context=".view.MainActivity">
 
     <EditText
         android:id="@+id/edt_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:hint="@string/input_size_please"
-        android:inputType="numberSigned"
+        android:inputType="number"
         android:lines="1"
-        android:text="@string/_100" />
+        android:text="@string/_100"
+        android:textAlignment="center" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
 
 
     <fragment
         android:id="@+id/fragment_collections"
-        android:name="com.example.alextarasyuk.collectionsandmaps.fragments.ListFragment"
+        android:name="com.example.alextarasyuk.collectionsandmaps.view.ListFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -30,7 +39,7 @@
 
     <fragment
         android:id="@+id/fragment_maps"
-        android:name="com.example.alextarasyuk.collectionsandmaps.fragments.MapFragment"
+        android:name="com.example.alextarasyuk.collectionsandmaps.view.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -40,9 +49,8 @@
         android:id="@+id/btn_calculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="@string/button_calculate" />
-
-
 
 
 </LinearLayout>

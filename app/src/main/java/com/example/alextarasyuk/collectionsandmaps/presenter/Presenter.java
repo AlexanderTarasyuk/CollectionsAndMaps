@@ -1,56 +1,337 @@
 package com.example.alextarasyuk.collectionsandmaps.presenter;
 
 
-import com.example.alextarasyuk.collectionsandmaps.fragments.IListFragment;
-
-import com.example.alextarasyuk.collectionsandmaps.fragments.ListFragment;
-import com.example.alextarasyuk.collectionsandmaps.fragments.MainActivity;
-import com.example.alextarasyuk.collectionsandmaps.fragments.MapFragment;
+import com.example.alextarasyuk.collectionsandmaps.contract.Contract;
 import com.example.alextarasyuk.collectionsandmaps.model.ListCalculation;
-import com.example.alextarasyuk.collectionsandmaps.model.MapCalculation;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import java.util.TreeMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutionException;
 
 
-public final class Presenter {
+public final class Presenter implements Contract.Presenter {
 
-    private MainActivity mainActivity;
-    IListFragment iListFragment;
-    private ListFragment listFragment;
-    private MapFragment mapFragment;
+    private Contract.View view;
+    private Contract.ListModel model;
+
+
     private List<Integer> arrayList;
     private List<Integer> linkedList;
     private List<Integer> writeOnWriteLinkedList;
-    private Map<Integer, Integer> hashMap;
-    private Map<Integer, Integer> treeMap;
-    private ListCalculation listCalculation;
-    private MapCalculation mapCalculation;
 
-    public Presenter() {
+
+    public Contract.ListModel getModel() {
+        return model;
     }
 
-    public void initializeMap(Integer size) {
-        Random random = new Random();
+
+    public List<Integer> getArrayList() {
+        return arrayList;
+    }
+
+    public List<Integer> getLinkedList() {
+        return linkedList;
+    }
+
+    public List<Integer> getWriteOnWriteLinkedList() {
+        return writeOnWriteLinkedList;
+    }
 
 
-        hashMap = new HashMap<>();
-        treeMap = new TreeMap<>();
-        for (int i = 0; i < size; i++) {
-            hashMap.put(new Integer(random.nextInt(100_000)), random.nextInt(100000));
-            treeMap.put(new Integer(random.nextInt(100_000)), random.nextInt(100000));
+    public Presenter(int size) {
+        initialzeList(size);
+
+    }
+
+
+    @Override
+    public void setTvInsertAtBeginningArrayList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvInsertAtBeginningArrayList(model.calculateInsertAtTheBeginning(arrayList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void setTvInsertAtMiddleArrayList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvInsertAtMiddleArrayList(model.calculateInsertAtTheMiddle(arrayList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
         }
     }
 
-    public void initialzeList(Integer size) {
+    @Override
+    public void setTvInsertAtEndArrayList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvInsertAtEndArrayList(model.calculateInsertAtTheEnd(arrayList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    @Override
+    public void setTvFindElementArrayList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvFindElementArrayList(model.calculateFindTheIndexOfElement(arrayList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void setTvDeleteFirstArrayList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvDeleteFirstArrayList(model.calculateRemoveFirstElement(arrayList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void setTvDeleteMiddle() {
+        if (view != null & model != null) {
+            try {
+                view.setTvDeleteMiddle(model.calculateRemoveMiddleElementArrayList(arrayList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @Override
+    public void setTvDeleteLastElementArrayList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvDeleteLastElementArrayList(model.calculateRemoveLastElement(arrayList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void setTvInsertAtBeginningLinkedList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvInsertAtBeginningLinkedList(model.calculateInsertAtTheBeginning(linkedList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @Override
+    public void setTvInsertAtMiddleLinkList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvInsertAtMiddleLinkList(model.calculateInsertAtTheMiddle(linkedList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void setTvInsertAtEndLinkList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvInsertAtEndLinkList(model.calculateInsertAtTheEnd(linkedList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void setTvFindElementLinkList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvFindElementLinkList(model.calculateFindTheIndexOfElement(linkedList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void setTvDeleteFirstLinkList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvDeleteFirstLinkList(model.calculateRemoveFirstElement(linkedList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void setTvDeleteMiddleLinkList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvDeleteMiddleLinkList(model.calculateRemoveMiddleElementArrayList(linkedList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void setTvDeleteLastLinkList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvDeleteLastLinkList(model.calculateRemoveLastElement(linkedList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void setTvInsertAtBeginningCopyOnWriteList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvInsertAtBeginningCopyOnWriteList(model.calculateInsertAtTheBeginning(writeOnWriteLinkedList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @Override
+    public void setTvInsertAtMiddleCopyOnWriteList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvInsertAtMiddleCopyOnWriteList(model.calculateInsertAtTheMiddle(writeOnWriteLinkedList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @Override
+    public void setTvInsertAtEndCopyOnWriteList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvInsertAtEndCopyOnWriteList(model.calculateInsertAtTheEnd(writeOnWriteLinkedList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @Override
+    public void setTvFindElementCopyOnWriteList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvFindElementCopyOnWriteList(model.calculateFindTheIndexOfElement(writeOnWriteLinkedList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void setTvDeleteFirstCopyOnWriteList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvDeleteFirstCopyOnWriteList(model.calculateRemoveFirstElement(writeOnWriteLinkedList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @Override
+    public void setTvDeleteMiddleCopyOnWriteList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvDeleteMiddleCopyOnWriteList(model.calculateRemoveMiddleElementArrayList(writeOnWriteLinkedList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @Override
+    public void setTvDeleteLastCopyOnWriteList() {
+        if (view != null & model != null) {
+            try {
+                view.setTvDeleteLastCopyOnWriteList(model.calculateRemoveMiddleElementArrayList(writeOnWriteLinkedList));
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+
+    private void initialzeList(Integer size) {
         arrayList = new ArrayList<>();
         linkedList = new LinkedList<>();
         writeOnWriteLinkedList = new CopyOnWriteArrayList<>();
@@ -68,79 +349,27 @@ public final class Presenter {
 
     }
 
+    @Override
+    public void loadSizeOfLists(int number) {
+        initialzeList(number);
 
-    public void calculateTableContentInPresenter(Integer size) {
-        initialzeList(size);
-        initializeMap(size);
-        iListFragment = new ListFragment();
-        listCalculation = new ListCalculation(arrayList, this);
-
-        try {
-
-            calculateContentInRepositoryArrayList(this.arrayList, this);
-
-
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
     }
 
-    private void calculateContentInRepositoryArrayList(List arrayList, Presenter presenter) throws ExecutionException, InterruptedException {
-        listCalculation.calculateInsertAtTheBeginningListArrayList(arrayList);
-        listCalculation.calculateListInsertAtTheMiddleArrayList(arrayList);
-        listCalculation.calculateListInsertAtTheEndArrayList(arrayList);
-        listCalculation.calculateFindTheIndexOfElement(arrayList);
-        listCalculation.calculateRemoveFirstElementArrayList(arrayList);
-        listCalculation.calculateRemoveMiddleElementArrayList(arrayList);
-        listCalculation.calculateRemoveLastElementatArrayList(arrayList);
-    }
 
-
-    public void attachView(MainActivity mainActivity) {
-        this.mainActivity = mainActivity;
-        mapFragment = new MapFragment();
-        listFragment = new ListFragment();
-    }
-
-    public void dettachView() {
-        mainActivity = null;
-        mapFragment = null;
-        listFragment = null;
-    }
-
-    public void getContentAddAtTheBeginningArList(String s) {
-        iListFragment.setTvInsertAtBeginningArrayList(s);
-    }
-
-    public void getContentAddAtTheMiddleArList(String s) {
-        iListFragment.setTvInsertAtMiddleArrayList(s);
-    }
-
-    public void getContentFindElementArrayList(String s) {
-        iListFragment.setTvFindElementArrayList(s);
-    }
-
-    public void getContentOfDeleteFirstElementArrayList(String s) {
-        iListFragment.setTvDeleteFirstArrayList(s);
-    }
-
-    public void getContentOfDeleteLastElementArrayList(String s) {
-        iListFragment.setTvDeleteLastElementArrayList(s);
-    }
-
-
-    public void getContentAddatTheEndArrayList(String s) {
-        iListFragment.setTvInsertAtEndArrayList(s);
-    }
-
-    public void getContentAddAtTheBeginningLinkedList() {
+    @Override
+    public void attachView(Contract.View view) {
+        this.view = view;
+        model = new ListCalculation();
 
     }
 
-    public void getContentAddAtTheBeginningCopyOnWriteList(String s) {
-        iListFragment.setTvInsertAtBeginningCopyOnWriteList(s);
+    @Override
+    public void detachView() {
+        view = null;
+        model = null;
+
     }
+
+
 }

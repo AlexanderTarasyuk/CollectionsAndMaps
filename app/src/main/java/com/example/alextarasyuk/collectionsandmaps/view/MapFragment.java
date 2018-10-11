@@ -1,4 +1,4 @@
-package com.example.alextarasyuk.collectionsandmaps.fragments;
+package com.example.alextarasyuk.collectionsandmaps.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,13 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.alextarasyuk.collectionsandmaps.R;
-import com.example.alextarasyuk.collectionsandmaps.model.MapCalculation;
 import com.example.alextarasyuk.collectionsandmaps.presenter.Presenter;
 
-import java.util.HashMap;
 import java.util.Queue;
-import java.util.TreeMap;
-import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,18 +61,30 @@ public class MapFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-
     }
 
-    public void setView() {
+    public void setAddInHashMap(String value) {
+        tvAddHashMap.setText(value);
+    }
 
-        tvAddHashMap.setText(String.valueOf(queue.poll()));
-        tvSelectHashMap.setText(String.valueOf(queue.poll()));
-        tvRemovingHashMap.setText(String.valueOf(queue.poll()));
-        tvAddNewTreeMap.setText(String.valueOf(queue.poll()));
-        tvSelectTreeMap.setText(String.valueOf(queue.poll()));
-        tvRemovingTreeMap.setText(String.valueOf(queue.poll()));
+    public void setSelectInHashMap(String value) {
+        tvSelectHashMap.setText(value);
+    }
 
+    public void setRemoveInHashMap(String value) {
+        tvRemovingHashMap.setText(value);
+    }
+
+    public void setAddInHTreeMap(String value) {
+        tvAddNewTreeMap.setText(value);
+    }
+
+    public void setSelectInTreeMap(String value) {
+        tvSelectTreeMap.setText(value);
+    }
+
+    public void setRemoveInTreeMap(String value) {
+        tvRemovingTreeMap.setText(value);
     }
 
 

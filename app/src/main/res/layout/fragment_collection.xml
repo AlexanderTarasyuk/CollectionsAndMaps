@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_collections"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".fragments.ListFragment">
+    tools:context=".view.ListFragment">
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/table_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
 
         <TableRow>
@@ -23,49 +21,57 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/nameTable"
+                android:textSize="@dimen/tv"
                 android:visibility="visible" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/insert_at_the_beginning" />
+                android:text="@string/insert_at_the_beginning"
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/insert_at_the_middle" />
+                android:text="@string/insert_at_the_middle"
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/insert_at_the_end" />
+                android:text="@string/insert_at_the_end"
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/find_element" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/delete_at_the_beginning" />
+                android:text="@string/find_element"
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/delete_at_the_middle" />
+                android:text="@string/delete_at_the_beginning"
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/dekete_at_the_end" />
+                android:text="@string/delete_at_the_middle"
+                android:textSize="@dimen/tv" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/delete_at_the_end"
+                android:textSize="@dimen/tv" />
         </TableRow>
 
         <TableRow>
@@ -76,55 +82,63 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/linkedlist"
-                android:visibility="visible" />
+                android:visibility="visible"
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_insert_atBeginning_linkList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_insert_atMiddle_linkList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_insert_atEnd_linkList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_findElement_linkList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_delete_first_linkList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_delete_midddle_linkList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_delete_last_linkList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
         </TableRow>
 
         <TableRow>
@@ -135,55 +149,63 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/arraylist"
-                android:visibility="visible" />
+                android:visibility="visible"
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_insert_atBeginning_arList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_insert_atMiddle_arList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_insert_atEnd_arList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_findElement_arList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_al_delete_first"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_delete_midddle_arList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_delete_last_arList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
         </TableRow>
 
         <TableRow>
@@ -194,61 +216,67 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/copy_on_write_arlist"
-                android:visibility="visible" />
+                android:visibility="visible"
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_insert_atBeginning_copy_on_write_arList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_insert_atMiddle_copy_on_write_arList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_insert_atEnd_copy_on_write_arList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_findElement_copy_on_write_arList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_al_delete_first_copy_on_write_arList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_delete_midddle_copy_on_write_arList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
 
             <TextView
                 android:id="@+id/tv_delete_last_copy_on_write_arList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/tv" />
         </TableRow>
 
 
-
     </TableLayout>
-
 
 
 </LinearLayout>

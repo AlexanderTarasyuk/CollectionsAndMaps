@@ -1,4 +1,4 @@
-package com.example.alextarasyuk.collectionsandmaps.fragments;
+package com.example.alextarasyuk.collectionsandmaps.view;
 
 public interface IListFragment {
 
