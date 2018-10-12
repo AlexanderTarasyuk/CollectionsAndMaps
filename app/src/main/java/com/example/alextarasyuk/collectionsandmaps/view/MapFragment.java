@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.alextarasyuk.collectionsandmaps.R;
-import com.example.alextarasyuk.collectionsandmaps.presenter.Presenter;
+import com.example.alextarasyuk.collectionsandmaps.presenter.ListPresenter;
 
 import java.util.Queue;
 
@@ -34,7 +34,7 @@ public class MapFragment extends Fragment {
     @BindView(R.id.tv_select_by_key_tree_map)
     TextView tvSelectTreeMap;
     Queue<Long> queue;
-    Presenter presenter;
+    ListPresenter presenter;
     Unbinder unbinder;
 
     public MapFragment() {

@@ -10,8 +10,8 @@ import android.widget.EditText;
 import com.example.alextarasyuk.collectionsandmaps.BuildConfig;
 import com.example.alextarasyuk.collectionsandmaps.R;
 import com.example.alextarasyuk.collectionsandmaps.contract.Contract;
+import com.example.alextarasyuk.collectionsandmaps.presenter.ListPresenter;
 import com.example.alextarasyuk.collectionsandmaps.presenter.MapPresenter;
-import com.example.alextarasyuk.collectionsandmaps.presenter.Presenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,10 +27,12 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
     EditText editText;
 
 
-    private Contract.Presenter presenter;
+    private Contract.Presenter listPresenter;
     private Contract.MapPresenter mapPresenter;
+
     private ListFragment listFragment;
     private MapFragment mapFragment;
+
     private Unbinder unbinder;
 
 
@@ -39,9 +41,10 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         unbinder = ButterKnife.bind(this);
-        presenter = new Presenter(getSize());
-        presenter.attachView(this);
-        presenter.loadSizeOfLists(getSize());
+
+        listPresenter = new ListPresenter(getSize());
+        listPresenter.attachView(this);
+//        listPresenter.loadSizeOfLists(getSize());
 
         mapPresenter = new MapPresenter(getSize());
         mapPresenter.attachView(this);
@@ -62,35 +65,35 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
         Timber.d("calculate content of table after button is clicked");
 
 
-        if (presenter != null & (getSize() >= 1) & !TextUtils.isEmpty(editText.getText().toString())) {
+        if (listPresenter != null & (getSize() >= 1) & !TextUtils.isEmpty(editText.getText().toString())) {
 
 
-            presenter.loadSizeOfLists(Integer.valueOf(editText.getText().toString()));
+            listPresenter.loadSizeOfLists(Integer.valueOf(editText.getText().toString()));
 
-            presenter.setTvInsertAtBeginningArrayList();
-            presenter.setTvInsertAtMiddleArrayList();
-            presenter.setTvInsertAtEndArrayList();
-            presenter.setTvFindElementArrayList();
-            presenter.setTvDeleteFirstArrayList();
-            presenter.setTvDeleteFirstArrayList();
-            presenter.setTvDeleteMiddle();
-            presenter.setTvDeleteLastElementArrayList();
+            listPresenter.setTvInsertAtBeginningArrayList();
+            listPresenter.setTvInsertAtMiddleArrayList();
+            listPresenter.setTvInsertAtEndArrayList();
+            listPresenter.setTvFindElementArrayList();
+            listPresenter.setTvDeleteFirstArrayList();
+            listPresenter.setTvDeleteFirstArrayList();
+            listPresenter.setTvDeleteMiddle();
+            listPresenter.setTvDeleteLastElementArrayList();
 
-            presenter.setTvInsertAtBeginningLinkedList();
-            presenter.setTvInsertAtMiddleLinkList();
-            presenter.setTvInsertAtEndLinkList();
-            presenter.setTvFindElementLinkList();
-            presenter.setTvDeleteFirstLinkList();
-            presenter.setTvDeleteMiddleLinkList();
-            presenter.setTvDeleteLastLinkList();
+            listPresenter.setTvInsertAtBeginningLinkedList();
+            listPresenter.setTvInsertAtMiddleLinkList();
+            listPresenter.setTvInsertAtEndLinkList();
+            listPresenter.setTvFindElementLinkList();
+            listPresenter.setTvDeleteFirstLinkList();
+            listPresenter.setTvDeleteMiddleLinkList();
+            listPresenter.setTvDeleteLastLinkList();
 
-            presenter.setTvInsertAtBeginningCopyOnWriteList();
-            presenter.setTvInsertAtMiddleCopyOnWriteList();
-            presenter.setTvInsertAtEndCopyOnWriteList();
-            presenter.setTvFindElementCopyOnWriteList();
-            presenter.setTvDeleteFirstCopyOnWriteList();
-            presenter.setTvDeleteMiddleCopyOnWriteList();
-            presenter.setTvDeleteLastCopyOnWriteList();
+            listPresenter.setTvInsertAtBeginningCopyOnWriteList();
+            listPresenter.setTvInsertAtMiddleCopyOnWriteList();
+            listPresenter.setTvInsertAtEndCopyOnWriteList();
+            listPresenter.setTvFindElementCopyOnWriteList();
+            listPresenter.setTvDeleteFirstCopyOnWriteList();
+            listPresenter.setTvDeleteMiddleCopyOnWriteList();
+            listPresenter.setTvDeleteLastCopyOnWriteList();
 
             mapPresenter.calculateAddNewElementToHashMap();
             mapPresenter.calculateFindElementInHashMapByKey();
@@ -126,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (presenter != null) presenter.detachView();
+        if (listPresenter != null) listPresenter.detachView();
         if (mapPresenter != null) mapPresenter.detachView();
 
         if (unbinder != null) unbinder.unbind();

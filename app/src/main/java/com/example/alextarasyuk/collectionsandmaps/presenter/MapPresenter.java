@@ -19,14 +19,15 @@ public class MapPresenter implements Contract.MapPresenter {
 
     public MapPresenter(int size) {
         initializeMap(size);
+        hashMapModel = new MapCalculation(hashMap);
+        treeMapModel = new MapCalculation(treeMap);
     }
 
 
     @Override
     public void attachView(Contract.View view) {
         this.view = view;
-        hashMapModel = new MapCalculation(hashMap);
-        treeMapModel = new MapCalculation(treeMap);
+
 
     }
 
