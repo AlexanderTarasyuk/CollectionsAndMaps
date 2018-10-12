@@ -21,13 +21,6 @@
         android:text="@string/_100"
         android:textAlignment="center" />
 
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true" />
-
 
     <fragment
         android:id="@+id/fragment_collections"

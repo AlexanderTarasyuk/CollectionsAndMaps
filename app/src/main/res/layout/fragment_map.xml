@@ -20,14 +20,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/name_map"
-                android:visibility="visible"
-                android:textSize="@dimen/tv" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/tv"
+                android:visibility="visible" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/adding_new"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/tv" />
 
             <TextView
@@ -35,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/search_by_key"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/tv" />
 
             <TextView
@@ -42,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/removing"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/tv" />
 
 
@@ -55,8 +59,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="HashMap"
-                android:visibility="visible"
-                android:textSize="@dimen/tv" />
+                android:textSize="@dimen/tv"
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/tv_add_new_hash_map"
@@ -92,8 +96,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="TreeMap"
-                android:visibility="visible"
-                android:textSize="@dimen/tv" />
+                android:textSize="@dimen/tv"
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/tv_add_new_tree_map"

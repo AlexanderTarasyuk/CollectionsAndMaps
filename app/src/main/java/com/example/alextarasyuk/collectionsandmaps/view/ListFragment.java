@@ -2,6 +2,7 @@ package com.example.alextarasyuk.collectionsandmaps.view;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -27,15 +28,15 @@ public class ListFragment extends Fragment implements IListFragment {
     @BindView(R.id.tv_insert_atMiddle_arList)
     TextView tvInsertAtMiddleArrayList;
     @BindView(R.id.tv_insert_atEnd_arList)
-    TextView tvInsertAtEnd;
+    TextView tvInsertAtEndArrayList;
     @BindView(R.id.tv_findElement_arList)
-    TextView tvFindElement;
+    TextView tvFindElementArrayList;
     @BindView(R.id.tv_al_delete_first)
-    TextView tvDeleteFirst;
+    TextView tvDeleteFirstArrayList;
     @BindView(R.id.tv_delete_midddle_arList)
-    TextView tvDeleteMiddle;
+    TextView tvDeleteMiddleArrayList;
     @BindView(R.id.tv_delete_last_arList)
-    TextView tvDeleteLast;
+    TextView tvDeleteLastArrayList;
 
     @BindView(R.id.tv_insert_atBeginning_linkList)
     TextView tvInsertAtBeginningLinkedList;
@@ -66,6 +67,7 @@ public class ListFragment extends Fragment implements IListFragment {
     TextView tvDeleteMiddleCopyOnWriteList;
     @BindView(R.id.tv_delete_last_copy_on_write_arList)
     TextView tvDeleteLastCopyOnWriteList;
+    Bundle bundle;
 
 
     private Unbinder unbinder;
@@ -82,6 +84,7 @@ public class ListFragment extends Fragment implements IListFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -103,6 +106,7 @@ public class ListFragment extends Fragment implements IListFragment {
     @Override
     public void setTvInsertAtBeginningArrayList(String valueOfCalculation) {
         tvInsertAtBeginningArrayList.setText(valueOfCalculation);
+
     }
 
     @Override
@@ -112,27 +116,27 @@ public class ListFragment extends Fragment implements IListFragment {
 
     @Override
     public void setTvInsertAtEndArrayList(String valueOfCalculation) {
-        tvInsertAtEnd.setText(valueOfCalculation);
+        tvInsertAtEndArrayList.setText(valueOfCalculation);
     }
 
     @Override
     public void setTvFindElementArrayList(String valueOfCalculation) {
-        tvFindElement.setText(valueOfCalculation);
+        tvFindElementArrayList.setText(valueOfCalculation);
     }
 
     @Override
     public void setTvDeleteFirstArrayList(String valueOfCalculation) {
-        tvDeleteFirst.setText(valueOfCalculation);
+        tvDeleteFirstArrayList.setText(valueOfCalculation);
     }
 
     @Override
-    public void setTvDeleteMiddle(String valueOfCalculation) {
-        tvDeleteMiddle.setText(valueOfCalculation);
+    public void setTvDeleteMiddleArrayList(String valueOfCalculation) {
+        tvDeleteMiddleArrayList.setText(valueOfCalculation);
     }
 
     @Override
     public void setTvDeleteLastElementArrayList(String valueOfCalculation) {
-        tvDeleteLast.setText(valueOfCalculation);
+        tvDeleteLastArrayList.setText(valueOfCalculation);
     }
 
     @Override
@@ -205,4 +209,64 @@ public class ListFragment extends Fragment implements IListFragment {
         tvDeleteLastCopyOnWriteList.setText(valueOfCalculation);
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("1", tvInsertAtBeginningArrayList.getText().toString());
+        outState.putString("2", tvInsertAtMiddleArrayList.getText().toString());
+        outState.putString("3", tvInsertAtEndArrayList.getText().toString());
+        outState.putString("4", tvFindElementArrayList.getText().toString());
+        outState.putString("5", tvDeleteFirstArrayList.getText().toString());
+        outState.putString("6", tvDeleteMiddleArrayList.getText().toString());
+        outState.putString("7", tvDeleteLastArrayList.getText().toString());
+
+        outState.putString("8", tvInsertAtBeginningLinkedList.getText().toString());
+        outState.putString("9", tvInsertAtMiddleLinkList.getText().toString());
+        outState.putString("10", tvInsertAtEndLinkList.getText().toString());
+        outState.putString("11", tvFindElementLinkList.getText().toString());
+        outState.putString("12", tvDeleteFirstLinkList.getText().toString());
+        outState.putString("13", tvDeleteMiddleLinkList.getText().toString());
+        outState.putString("14", tvDeleteLastLinkList.getText().toString());
+
+        outState.putString("15", tvInsertAtBeginningCopyOnWriteList.getText().toString());
+        outState.putString("16", tvInsertAtMiddleCopyOnWriteList.getText().toString());
+        outState.putString("17", tvInsertAtEndCopyOnWriteList.getText().toString());
+        outState.putString("18", tvFindElementCopyOnWriteList.getText().toString());
+        outState.putString("19", tvDeleteFirstCopyOnWriteList.getText().toString());
+        outState.putString("20", tvDeleteMiddleCopyOnWriteList.getText().toString());
+        outState.putString("21", tvDeleteLastCopyOnWriteList.getText().toString());
+
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (savedInstanceState != null) {
+            tvInsertAtBeginningArrayList.setText(savedInstanceState.getString("1"));
+            tvInsertAtMiddleArrayList.setText(savedInstanceState.getString("2"));
+            tvInsertAtEndArrayList.setText(savedInstanceState.getString("3"));
+            tvFindElementArrayList.setText(savedInstanceState.getString("4"));
+            tvDeleteFirstArrayList.setText(savedInstanceState.getString("5"));
+            tvDeleteMiddleArrayList.setText(savedInstanceState.getString("6"));
+            tvDeleteLastArrayList.setText(savedInstanceState.getString("7"));
+
+            tvInsertAtBeginningLinkedList.setText(savedInstanceState.getString("8"));
+            tvInsertAtMiddleLinkList.setText(savedInstanceState.getString("9"));
+            tvInsertAtEndLinkList.setText(savedInstanceState.getString("10"));
+            tvFindElementLinkList.setText(savedInstanceState.getString("11"));
+            tvDeleteFirstLinkList.setText(savedInstanceState.getString("12"));
+            tvDeleteMiddleLinkList.setText(savedInstanceState.getString("13"));
+            tvDeleteLastLinkList.setText(savedInstanceState.getString("14"));
+
+            tvInsertAtBeginningCopyOnWriteList.setText(savedInstanceState.getString("15"));
+            tvInsertAtMiddleCopyOnWriteList.setText(savedInstanceState.getString("16"));
+            tvInsertAtEndCopyOnWriteList.setText(savedInstanceState.getString("17"));
+            tvFindElementCopyOnWriteList.setText(savedInstanceState.getString("18"));
+            tvDeleteFirstCopyOnWriteList.setText(savedInstanceState.getString("19"));
+            tvDeleteMiddleCopyOnWriteList.setText(savedInstanceState.getString("20"));
+            tvDeleteLastCopyOnWriteList.setText(savedInstanceState.getString("21"));
+
+        }
+
+    }
 }

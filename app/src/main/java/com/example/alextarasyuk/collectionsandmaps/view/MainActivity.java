@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 
 import com.example.alextarasyuk.collectionsandmaps.BuildConfig;
 import com.example.alextarasyuk.collectionsandmaps.R;
@@ -26,8 +25,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
     Button btn;
     @BindView(R.id.edt_text)
     EditText editText;
-    @BindView(R.id.progressBar1)
-    private ProgressBar spinner;
+
 
     private Contract.Presenter presenter;
     private Contract.MapPresenter mapPresenter;
@@ -55,13 +53,14 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
+
     }
+
 
     @OnClick(R.id.btn_calculate)
     void calculateContenetOfTableafterButtonIsClicked(View view) {
         Timber.d("calculate content of table after button is clicked");
 
-        spinner.setVisibility(View.VISIBLE);
 
         if (presenter != null & (getSize() >= 1) & !TextUtils.isEmpty(editText.getText().toString())) {
 
@@ -100,11 +99,28 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
             mapPresenter.calculateAddNewElementToTreeMap();
             mapPresenter.calculateFindElementInTreeMapByKey();
             mapPresenter.calculateRemoveElementInTreeMapByKey();
+
         }
 
-        spinner.setVisibility(View.GONE);
 
-        editText.setText("10");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("EditTextValue", editText.getText().toString());
+        getSupportFragmentManager().putFragment(outState, "ListFragment", listFragment);
+        getSupportFragmentManager().putFragment(outState, "MapFragment", mapFragment);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState != null) {
+            editText.setText(savedInstanceState.getString("EditTextValue"));
+            listFragment = (ListFragment) getSupportFragmentManager().getFragment(savedInstanceState, "ListFragment");
+            mapFragment = (MapFragment) getSupportFragmentManager().getFragment(savedInstanceState, "MapFragment");
+        }
     }
 
     @Override
@@ -153,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
 
     @Override
     public void setTvDeleteMiddle(String valueOfCalculation) {
-        if (listFragment != null) listFragment.setTvDeleteMiddle(valueOfCalculation);
+        if (listFragment != null) listFragment.setTvDeleteMiddleArrayList(valueOfCalculation);
     }
 
     @Override

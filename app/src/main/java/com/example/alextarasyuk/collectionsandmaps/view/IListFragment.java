@@ -15,7 +15,7 @@ public interface IListFragment {
 
     public void setTvDeleteFirstArrayList(String valueOfCalculation);
 
-    public void setTvDeleteMiddle(String valueOfCalculation);
+    public void setTvDeleteMiddleArrayList(String valueOfCalculation);
 
     public void setTvDeleteLastElementArrayList(String valueOfCalculation);
 

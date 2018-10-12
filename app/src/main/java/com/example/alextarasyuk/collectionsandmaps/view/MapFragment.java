@@ -1,6 +1,7 @@
 package com.example.alextarasyuk.collectionsandmaps.view;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -50,7 +51,6 @@ public class MapFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
         View view = inflater.inflate(R.layout.fragment_map, container, false);
         unbinder = ButterKnife.bind(this, view);
 
@@ -87,5 +87,33 @@ public class MapFragment extends Fragment {
         tvRemovingTreeMap.setText(value);
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
 
+        outState.putString("22", tvAddHashMap.getText().toString());
+        outState.putString("23", tvSelectHashMap.getText().toString());
+        outState.putString("24", tvRemovingHashMap.getText().toString());
+
+        outState.putString("25", tvAddNewTreeMap.getText().toString());
+        outState.putString("26", tvSelectTreeMap.getText().toString());
+        outState.putString("27", tvRemovingTreeMap.getText().toString());
+
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            tvAddHashMap.setText(savedInstanceState.getString("22"));
+            tvSelectHashMap.setText(savedInstanceState.getString("23"));
+            tvRemovingHashMap.setText(savedInstanceState.getString("24"));
+
+            tvAddNewTreeMap.setText(savedInstanceState.getString("25"));
+            tvSelectTreeMap.setText(savedInstanceState.getString("26"));
+            tvRemovingTreeMap.setText(savedInstanceState.getString("27"));
+
+        }
+    }
 }
