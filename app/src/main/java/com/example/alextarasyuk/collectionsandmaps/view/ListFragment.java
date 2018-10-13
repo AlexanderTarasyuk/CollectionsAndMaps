@@ -84,6 +84,8 @@ public class ListFragment extends Fragment implements IListFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+
 
     }
 

@@ -9,65 +9,60 @@ import java.util.concurrent.ExecutionException;
 
 public class MapCalculation implements Contract.MapModel {
 
-    private Map map;
 
-    public MapCalculation(Map<Integer, Integer> map) {
-        this.map = map;
+    public MapCalculation() {
+
     }
 
     @Override
-    public String calculateAddNewElementToMap() throws ExecutionException, InterruptedException {
+    public String calculateAddNewElementToMap(Map<Integer, Integer> map) throws ExecutionException, InterruptedException {
 
-        AddNewElementToMap myAsynkTask4 = new AddNewElementToMap();
-        myAsynkTask4.execute();
-
-        return String.valueOf(myAsynkTask4.get());
+        return new AddNewElementToMap().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, map).get();
     }
 
     @Override
-    public String calculateFindElementInMapByKey() throws ExecutionException, InterruptedException {
-        FindElementInMapByKey findElementInMap = new FindElementInMapByKey();
-        findElementInMap.execute();
-        return String.valueOf(findElementInMap.get());
+    public String calculateFindElementInMapByKey(Map<Integer, Integer> map) throws ExecutionException, InterruptedException {
+        return new FindElementInMapByKey().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, map).get();
     }
 
     @Override
-    public String calculateRemoveElementInMapByKey() throws ExecutionException, InterruptedException {
-        RemoveElementInMap removeElementInMap = new RemoveElementInMap();
-        removeElementInMap.execute();
-        return String.valueOf(removeElementInMap.get());
+    public String calculateRemoveElementInMapByKey(Map<Integer, Integer> map) throws ExecutionException, InterruptedException {
+        return new RemoveElementInMap().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, map).get();
     }
 
 
-    public class AddNewElementToMap extends AsyncTask<Void, Void, Long> {
+    public static class AddNewElementToMap extends AsyncTask<Map<Integer, Integer>, Void, String> {
 
         @Override
-        protected Long doInBackground(Void... voids) {
+        protected String doInBackground(Map... voids) {
 
             long temp = System.nanoTime();
-            map.put(new Integer(1), 1);
-            return (System.nanoTime() - temp);
+            voids[0].put(new Integer(1), 1);
+            return String.valueOf(System.nanoTime() - temp);
         }
     }
 
-    public class FindElementInMapByKey extends AsyncTask<Void, Void, Long> {
+    public static class FindElementInMapByKey extends AsyncTask<Map<Integer, Integer>, Void, String> {
+
         @Override
-        protected Long doInBackground(Void... voids) {
+        protected String doInBackground(Map... voids) {
 
             long temp = System.nanoTime();
-            map.get(123);
-            return (System.nanoTime() - temp);
+            voids[0].get(11);
+            return String.valueOf(System.nanoTime() - temp);
         }
     }
 
-    public class RemoveElementInMap extends AsyncTask<Void, Void, Long> {
+    public static class RemoveElementInMap extends AsyncTask<Map<Integer, Integer>, Void, String> {
 
         @Override
-        protected Long doInBackground(Void... voids) {
+        protected String doInBackground(Map... voids) {
+
 
             long temp = System.nanoTime();
-            map.remove(123);
-            return (System.nanoTime() - temp);
+            voids[0].remove(11);
+            return String.valueOf(System.nanoTime() - temp);
         }
     }
 }
+

@@ -14,13 +14,95 @@ public class MapPresenter implements Contract.MapPresenter {
     private Map<Integer, Integer> hashMap;
     private Map<Integer, Integer> treeMap;
 
-    private Contract.MapModel treeMapModel;
-    private Contract.MapModel hashMapModel;
+    private Contract.MapModel mapModel;
 
-    public MapPresenter(int size) {
-        initializeMap(size);
-        hashMapModel = new MapCalculation(hashMap);
-        treeMapModel = new MapCalculation(treeMap);
+
+    public MapPresenter() {
+
+        mapModel = new MapCalculation();
+    }
+
+
+    @Override
+    public void calculateAddNewElementToHashMap() {
+        try {
+            view.setAddNewInHashMap(mapModel.calculateAddNewElementToMap(hashMap));
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void calculateFindElementInHashMapByKey() {
+        try {
+            view.setSelectInHashMap(mapModel.calculateFindElementInMapByKey(hashMap));
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void calculateRemoveElementInHashMapByKey() {
+        try {
+            view.setRemoveInHashMap(mapModel.calculateRemoveElementInMapByKey(hashMap));
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void calculateAddNewElementToTreeMap() {
+        try {
+            view.setAddNewInTreeMap(mapModel.calculateAddNewElementToMap(treeMap));
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void calculateFindElementInTreeMapByKey() {
+
+        try {
+            view.setSelectInTreeMap(mapModel.calculateFindElementInMapByKey(treeMap));
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void calculateRemoveElementInTreeMapByKey() {
+        try {
+            view.setRemoveInTreeMap(mapModel.calculateRemoveElementInMapByKey(treeMap));
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void initializeMap(Integer size) {
+        Random random = new Random();
+        hashMap = new HashMap<>();
+        treeMap = new TreeMap<>();
+        for (int i = 0; i < size; i++) {
+            hashMap.put(new Integer(random.nextInt(100_000)), random.nextInt(100000));
+            treeMap.put(new Integer(random.nextInt(100_000)), random.nextInt(100000));
+
+        }
     }
 
 
@@ -34,87 +116,5 @@ public class MapPresenter implements Contract.MapPresenter {
     @Override
     public void detachView() {
         this.view = null;
-    }
-
-    @Override
-    public void calculateAddNewElementToHashMap() {
-        try {
-            view.setAddNewInHashMap(hashMapModel.calculateAddNewElementToMap());
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    @Override
-    public void calculateFindElementInHashMapByKey() {
-        try {
-            view.setSelectInHashMap(hashMapModel.calculateFindElementInMapByKey());
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    @Override
-    public void calculateRemoveElementInHashMapByKey() {
-        try {
-            view.setRemoveInHashMap(hashMapModel.calculateRemoveElementInMapByKey());
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void calculateAddNewElementToTreeMap() {
-        try {
-            view.setAddNewInTreeMap(treeMapModel.calculateAddNewElementToMap());
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    @Override
-    public void calculateFindElementInTreeMapByKey() {
-
-        try {
-            view.setSelectInTreeMap(treeMapModel.calculateFindElementInMapByKey());
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void calculateRemoveElementInTreeMapByKey() {
-        try {
-            view.setRemoveInTreeMap(treeMapModel.calculateRemoveElementInMapByKey());
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    private void initializeMap(Integer size) {
-        Random random = new Random();
-        hashMap = new HashMap<>();
-        treeMap = new TreeMap<>();
-        for (int i = 0; i < size; i++) {
-            hashMap.put(new Integer(random.nextInt(100_000)), random.nextInt(100000));
-            treeMap.put(new Integer(random.nextInt(100_000)), random.nextInt(100000));
-
-        }
     }
 }

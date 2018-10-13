@@ -42,11 +42,10 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
         setContentView(R.layout.activity_main);
         unbinder = ButterKnife.bind(this);
 
-        listPresenter = new ListPresenter(getSize());
+        listPresenter = new ListPresenter();
         listPresenter.attachView(this);
-//        listPresenter.loadSizeOfLists(getSize());
 
-        mapPresenter = new MapPresenter(getSize());
+        mapPresenter = new MapPresenter();
         mapPresenter.attachView(this);
 
         listFragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_collections);
@@ -67,8 +66,9 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
 
         if (listPresenter != null & (getSize() >= 1) & !TextUtils.isEmpty(editText.getText().toString())) {
 
+            listPresenter.initialzeList(Integer.valueOf(editText.getText().toString()));
+            mapPresenter.initializeMap(Integer.valueOf(editText.getText().toString()));
 
-            listPresenter.loadSizeOfLists(Integer.valueOf(editText.getText().toString()));
 
             listPresenter.setTvInsertAtBeginningArrayList();
             listPresenter.setTvInsertAtMiddleArrayList();

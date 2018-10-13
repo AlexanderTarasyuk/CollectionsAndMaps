@@ -18,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class MapFragment extends Fragment {
+public class MapFragment extends Fragment implements IMapFragment {
 
 
     @BindView(R.id.tv_add_new_hash_map)
@@ -63,26 +63,32 @@ public class MapFragment extends Fragment {
         unbinder.unbind();
     }
 
+    @Override
     public void setAddInHashMap(String value) {
         tvAddHashMap.setText(value);
     }
 
+    @Override
     public void setSelectInHashMap(String value) {
         tvSelectHashMap.setText(value);
     }
 
+    @Override
     public void setRemoveInHashMap(String value) {
         tvRemovingHashMap.setText(value);
     }
 
+    @Override
     public void setAddInHTreeMap(String value) {
         tvAddNewTreeMap.setText(value);
     }
 
+    @Override
     public void setSelectInTreeMap(String value) {
         tvSelectTreeMap.setText(value);
     }
 
+    @Override
     public void setRemoveInTreeMap(String value) {
         tvRemovingTreeMap.setText(value);
     }

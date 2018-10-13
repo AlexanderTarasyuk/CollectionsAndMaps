@@ -2,15 +2,15 @@ package com.example.alextarasyuk.collectionsandmaps.view;
 
 public interface IMapFragment {
 
-    public void setAddNewInHashMap(String value);
+    void setAddInHashMap(String value);
 
-    public void setSelectNewInHashMap(String value);
+    void setSelectInHashMap(String value);
 
-    public void setRemoveNewInHashMap(String value);
+    void setRemoveInHashMap(String value);
 
-    public void setAddNewInHTreeMap(String value);
+    void setAddInHTreeMap(String value);
 
-    public void setSelectNewInTreeMap(String value);
+    void setSelectInTreeMap(String value);
 
-    public void setRemoveNewInTreeMap(String value);
+    void setRemoveInTreeMap(String value);
 }

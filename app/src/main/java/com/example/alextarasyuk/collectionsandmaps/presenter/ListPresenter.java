@@ -12,7 +12,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutionException;
 
 
-public final class ListPresenter implements Contract.Presenter {
+public class ListPresenter implements Contract.Presenter {
 
     private Contract.View view;
     private Contract.ListModel model;
@@ -22,8 +22,8 @@ public final class ListPresenter implements Contract.Presenter {
     private List<Integer> linkedList;
     private List<Integer> writeOnWriteLinkedList;
 
-    public ListPresenter(int size) {
-        initialzeList(size);
+    public ListPresenter() {
+
         model = new ListCalculation();
 
     }
@@ -312,8 +312,8 @@ public final class ListPresenter implements Contract.Presenter {
 
     }
 
-
-    private void initialzeList(Integer size) {
+    @Override
+    public void initialzeList(Integer size) {
         arrayList = new ArrayList<>();
         linkedList = new LinkedList<>();
         writeOnWriteLinkedList = new CopyOnWriteArrayList<>();

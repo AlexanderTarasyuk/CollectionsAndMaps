@@ -1,6 +1,7 @@
 package com.example.alextarasyuk.collectionsandmaps.contract;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public interface Contract {
@@ -79,9 +80,13 @@ public interface Contract {
         public void calculateFindElementInTreeMapByKey();
 
         public void calculateRemoveElementInTreeMapByKey();
+
+        void initializeMap(Integer size);
     }
 
     interface Presenter {
+        void initialzeList(Integer size);
+
         void loadSizeOfLists(int number);
 
 
@@ -155,10 +160,10 @@ public interface Contract {
 
     public interface MapModel {
 
-        public String calculateAddNewElementToMap() throws ExecutionException, InterruptedException;
+        public String calculateAddNewElementToMap(Map<Integer, Integer> treeMap) throws ExecutionException, InterruptedException;
 
-        public String calculateFindElementInMapByKey() throws ExecutionException, InterruptedException;
+        public String calculateFindElementInMapByKey(Map<Integer, Integer> treeMap) throws ExecutionException, InterruptedException;
 
-        public String calculateRemoveElementInMapByKey() throws ExecutionException, InterruptedException;
+        public String calculateRemoveElementInMapByKey(Map<Integer, Integer> treeMap) throws ExecutionException, InterruptedException;
     }
 }
