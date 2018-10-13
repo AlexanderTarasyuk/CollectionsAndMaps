@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.example.alextarasyuk.collectionsandmaps.BuildConfig;
 import com.example.alextarasyuk.collectionsandmaps.R;
@@ -25,6 +26,9 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
     Button btn;
     @BindView(R.id.edt_text)
     EditText editText;
+
+    @BindView(R.id.progress_bar)
+    ProgressBar progressBar;
 
 
     private Contract.Presenter listPresenter;
@@ -66,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
 
         if (listPresenter != null & (getSize() >= 1) & !TextUtils.isEmpty(editText.getText().toString())) {
 
+
             listPresenter.initialzeList(Integer.valueOf(editText.getText().toString()));
             mapPresenter.initializeMap(Integer.valueOf(editText.getText().toString()));
 
@@ -102,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
             mapPresenter.calculateAddNewElementToTreeMap();
             mapPresenter.calculateFindElementInTreeMapByKey();
             mapPresenter.calculateRemoveElementInTreeMapByKey();
+
 
         }
 
