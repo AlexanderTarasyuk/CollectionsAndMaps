@@ -124,6 +124,7 @@ public class ListCalculation implements Contract.ListModel {
             long time = System.nanoTime() - temp;
             return String.valueOf(time);
         }
+
     }
 
 }
