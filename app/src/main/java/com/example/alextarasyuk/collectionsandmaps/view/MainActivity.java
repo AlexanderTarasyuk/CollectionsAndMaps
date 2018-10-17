@@ -46,10 +46,10 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
         setContentView(R.layout.activity_main);
         unbinder = ButterKnife.bind(this);
 
-        listPresenter = new ListPresenter();
+        listPresenter = ListPresenter.getListPresenterSingleton();
         listPresenter.attachView(this);
 
-        mapPresenter = new MapPresenter();
+        mapPresenter = MapPresenter.getMapPresenterSingleton();
         mapPresenter.attachView(this);
 
         listFragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_collections);

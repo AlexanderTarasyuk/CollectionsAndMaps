@@ -2,32 +2,44 @@ package com.example.alextarasyuk.collectionsandmaps.model;
 
 import android.os.AsyncTask;
 
+import com.example.alextarasyuk.collectionsandmaps.Utils;
 import com.example.alextarasyuk.collectionsandmaps.contract.Contract;
 
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-public class MapCalculation implements Contract.MapModel {
+public final class MapCalculation implements Contract.MapModel {
 
+    private static MapCalculation mapCalculation;
 
-    public MapCalculation() {
+    private MapCalculation() {
+    }
 
+    public static MapCalculation getMapCalculationSingleTon() {
+
+        synchronized (MapCalculation.class) {
+            if (mapCalculation != null) {
+                return mapCalculation;
+            } else {
+                return new MapCalculation();
+            }
+        }
     }
 
     @Override
     public String calculateAddNewElementToMap(Map<Integer, Integer> map) throws ExecutionException, InterruptedException {
 
-        return new AddNewElementToMap().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, map).get();
+        return new AddNewElementToMap().executeOnExecutor(Utils.getExecutorService(), map).get();
     }
 
     @Override
     public String calculateFindElementInMapByKey(Map<Integer, Integer> map) throws ExecutionException, InterruptedException {
-        return new FindElementInMapByKey().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, map).get();
+        return new FindElementInMapByKey().executeOnExecutor(Utils.getExecutorService(), map).get();
     }
 
     @Override
     public String calculateRemoveElementInMapByKey(Map<Integer, Integer> map) throws ExecutionException, InterruptedException {
-        return new RemoveElementInMap().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, map).get();
+        return new RemoveElementInMap().executeOnExecutor(Utils.getExecutorService(), map).get();
     }
 
 

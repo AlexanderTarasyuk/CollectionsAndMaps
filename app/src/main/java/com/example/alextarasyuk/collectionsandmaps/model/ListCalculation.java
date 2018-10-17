@@ -2,19 +2,36 @@ package com.example.alextarasyuk.collectionsandmaps.model;
 
 import android.os.AsyncTask;
 
+import com.example.alextarasyuk.collectionsandmaps.Utils;
 import com.example.alextarasyuk.collectionsandmaps.contract.Contract;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class ListCalculation implements Contract.ListModel {
+public final class ListCalculation implements Contract.ListModel {
+
+    private static ListCalculation listCalculation;
+
+    private ListCalculation() {
+    }
+
+    public static ListCalculation getListCalculationSingleton() {
+        synchronized (ListCalculation.class) {
+            if (listCalculation != null) {
+                return listCalculation;
+            } else {
+                return new ListCalculation();
+            }
+        }
+
+    }
 
 
     @Override
     public String calculateInsertAtTheBeginning(List<Integer> list) throws ExecutionException, InterruptedException {
         InsertAddTheBeginning task = new InsertAddTheBeginning();
 
-        return task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, list).get();
+        return task.executeOnExecutor(Utils.getExecutorService(), list).get();
 
 
     }
@@ -33,7 +50,7 @@ public class ListCalculation implements Contract.ListModel {
     public String calculateInsertAtTheMiddle(List<Integer> list) throws ExecutionException, InterruptedException {
 
         InsertAddTheMiddle task = new InsertAddTheMiddle();
-        return task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, list).get();
+        return task.executeOnExecutor(Utils.getExecutorService(), list).get();
     }
 
 
@@ -50,7 +67,7 @@ public class ListCalculation implements Contract.ListModel {
     @Override
     public String calculateInsertAtTheEnd(List<Integer> list) throws ExecutionException, InterruptedException {
 
-        return new InsertAddTheEnd().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, list).get();
+        return new InsertAddTheEnd().executeOnExecutor(Utils.getExecutorService(), list).get();
 
     }
 
@@ -67,7 +84,7 @@ public class ListCalculation implements Contract.ListModel {
     @Override
     public String calculateFindTheIndexOfElement(List<Integer> list) throws ExecutionException, InterruptedException {
 
-        return new FindTheIndex().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, list).get();
+        return new FindTheIndex().executeOnExecutor(Utils.getExecutorService(), list).get();
     }
 
     static class FindTheIndex extends AsyncTask<List, Void, String> {
@@ -82,7 +99,7 @@ public class ListCalculation implements Contract.ListModel {
 
     @Override
     public String calculateRemoveFirstElement(List<Integer> list) throws ExecutionException, InterruptedException {
-        return new DeleteFirstInList().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, list).get();
+        return new DeleteFirstInList().executeOnExecutor(Utils.getExecutorService(), list).get();
     }
 
     static class DeleteFirstInList extends AsyncTask<List, Void, String> {
@@ -98,7 +115,7 @@ public class ListCalculation implements Contract.ListModel {
 
     @Override
     public String calculateRemoveMiddleElementArrayList(List<Integer> list) throws ExecutionException, InterruptedException {
-        return new DeleteMiddleInList().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, list).get();
+        return new DeleteMiddleInList().executeOnExecutor(Utils.getExecutorService(), list).get();
     }
 
     static class DeleteMiddleInList extends AsyncTask<List, Void, String> {
@@ -113,7 +130,7 @@ public class ListCalculation implements Contract.ListModel {
 
     @Override
     public String calculateRemoveLastElement(List<Integer> list) throws ExecutionException, InterruptedException {
-        return new DeleteLastInList().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, list).get();
+        return new DeleteLastInList().executeOnExecutor(Utils.getExecutorService(), list).get();
     }
 
     static class DeleteLastInList extends AsyncTask<List, Void, String> {
