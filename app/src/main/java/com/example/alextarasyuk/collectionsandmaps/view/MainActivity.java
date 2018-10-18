@@ -49,8 +49,18 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
         listPresenter = ListPresenter.getListPresenterSingleton();
         listPresenter.attachView(this);
 
+
         mapPresenter = MapPresenter.getMapPresenterSingleton();
         mapPresenter.attachView(this);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                listPresenter.initialzeList(Integer.valueOf(editText.getText().toString()));
+                mapPresenter.initializeMap(Integer.valueOf(editText.getText().toString()));
+
+            }
+        }).start();
 
         listFragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_collections);
         mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_maps);
@@ -59,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
-
     }
 
 
@@ -68,11 +77,17 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
         Timber.d("calculate content of table after button is clicked");
 
 
-        if (listPresenter != null & (getSize() >= 1) & !TextUtils.isEmpty(editText.getText().toString())) {
+        if (listPresenter != null & (getSize() >= 1) & !TextUtils.isEmpty(editText.getText().toString())
+                & Integer.valueOf(editText.getText().toString()) <= Integer.MAX_VALUE) {
 
 
-            listPresenter.initialzeList(Integer.valueOf(editText.getText().toString()));
-            mapPresenter.initializeMap(Integer.valueOf(editText.getText().toString()));
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    listPresenter.initialzeList(Integer.valueOf(editText.getText().toString()));
+                    mapPresenter.initializeMap(Integer.valueOf(editText.getText().toString()));
+                }
+            }).start();
 
 
             listPresenter.setTvInsertAtBeginningArrayList();
@@ -108,10 +123,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
             mapPresenter.calculateFindElementInTreeMapByKey();
             mapPresenter.calculateRemoveElementInTreeMapByKey();
 
-
         }
-
-
     }
 
     @Override
@@ -137,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
         super.onDestroy();
         if (listPresenter != null) listPresenter.detachView();
         if (mapPresenter != null) mapPresenter.detachView();
+
 
         if (unbinder != null) unbinder.unbind();
 
@@ -292,5 +305,10 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
     public void setRemoveInTreeMap(String value) {
         mapFragment.setRemoveInTreeMap(value);
 
+    }
+
+    @Override
+    public int loadSize() {
+        return Integer.valueOf(editText.getText().toString().trim());
     }
 }

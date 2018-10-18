@@ -13,8 +13,12 @@ public final class MapPresenter implements Contract.MapPresenter {
     private Contract.View view;
     private Map<Integer, Integer> hashMap;
     private Map<Integer, Integer> treeMap;
+    private static volatile MapPresenter mapPresenter;
 
-    private static MapPresenter mapPresenter;
+    public Contract.View getView() {
+        return view;
+    }
+
     private Contract.MapModel mapModel;
 
 
@@ -24,13 +28,12 @@ public final class MapPresenter implements Contract.MapPresenter {
     }
 
     public static MapPresenter getMapPresenterSingleton() {
-        synchronized (MapPresenter.class) {
-            if (mapPresenter != null) {
-                return mapPresenter;
-            } else {
-                return mapPresenter = new MapPresenter();
+        if (mapPresenter == null) {
+            synchronized (MapPresenter.class) {
+                mapPresenter = new MapPresenter();
             }
         }
+        return mapPresenter;
     }
 
 
@@ -106,14 +109,16 @@ public final class MapPresenter implements Contract.MapPresenter {
 
     @Override
     public void initializeMap(Integer size) {
+
         Random random = new Random();
         hashMap = new HashMap<>();
         treeMap = new TreeMap<>();
-        for (int i = 0; i < size; i++) {
-            hashMap.put(new Integer(random.nextInt(100_000)), random.nextInt(100000));
-            treeMap.put(new Integer(random.nextInt(100_000)), random.nextInt(100000));
 
+        for (int i = 0; i < size; i++) {
+            hashMap.put(i, random.nextInt(100_000));
+            treeMap.put(i, random.nextInt(100_000));
         }
+
     }
 
 

@@ -10,19 +10,19 @@ import java.util.concurrent.ExecutionException;
 
 public final class ListCalculation implements Contract.ListModel {
 
-    private static ListCalculation listCalculation;
+    private static volatile ListCalculation listCalculation;
 
     private ListCalculation() {
     }
 
     public static ListCalculation getListCalculationSingleton() {
-        synchronized (ListCalculation.class) {
-            if (listCalculation != null) {
-                return listCalculation;
-            } else {
-                return new ListCalculation();
+
+        if (listCalculation == null) {
+            synchronized (ListCalculation.class) {
+                listCalculation = new ListCalculation();
             }
         }
+        return listCalculation;
 
     }
 

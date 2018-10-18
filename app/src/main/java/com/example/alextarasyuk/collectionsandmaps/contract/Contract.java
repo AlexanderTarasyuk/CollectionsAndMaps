@@ -6,62 +6,64 @@ import java.util.concurrent.ExecutionException;
 
 public interface Contract {
     interface View {
-        public void setTvInsertAtBeginningArrayList(String valueOfCalculation);
+        void setTvInsertAtBeginningArrayList(String valueOfCalculation);
 
-        public void setTvInsertAtMiddleArrayList(String valueOfCalculation);
-
-
-        public void setTvInsertAtEndArrayList(String valueOfCalculation);
+        void setTvInsertAtMiddleArrayList(String valueOfCalculation);
 
 
-        public void setTvFindElementArrayList(String valueOfCalculation);
+        void setTvInsertAtEndArrayList(String valueOfCalculation);
 
 
-        public void setTvDeleteFirstArrayList(String valueOfCalculation);
+        void setTvFindElementArrayList(String valueOfCalculation);
 
-        public void setTvDeleteMiddle(String valueOfCalculation);
 
-        public void setTvDeleteLastElementArrayList(String valueOfCalculation);
+        void setTvDeleteFirstArrayList(String valueOfCalculation);
 
-        public void setTvInsertAtBeginningLinkedList(String valueOfCalculation);
+        void setTvDeleteMiddle(String valueOfCalculation);
 
-        public void setTvInsertAtMiddleLinkList(String valueOfCalculation);
+        void setTvDeleteLastElementArrayList(String valueOfCalculation);
 
-        public void setTvInsertAtEndLinkList(String valueOfCalculation);
+        void setTvInsertAtBeginningLinkedList(String valueOfCalculation);
 
-        public void setTvFindElementLinkList(String valueOfCalculation);
+        void setTvInsertAtMiddleLinkList(String valueOfCalculation);
 
-        public void setTvDeleteFirstLinkList(String valueOfCalculation);
+        void setTvInsertAtEndLinkList(String valueOfCalculation);
 
-        public void setTvDeleteMiddleLinkList(String valueOfCalculation);
+        void setTvFindElementLinkList(String valueOfCalculation);
 
-        public void setTvDeleteLastLinkList(String valueOfCalculation);
+        void setTvDeleteFirstLinkList(String valueOfCalculation);
 
-        public void setTvInsertAtBeginningCopyOnWriteList(String valueOfCalculation);
+        void setTvDeleteMiddleLinkList(String valueOfCalculation);
 
-        public void setTvInsertAtMiddleCopyOnWriteList(String valueOfCalculation);
+        void setTvDeleteLastLinkList(String valueOfCalculation);
 
-        public void setTvInsertAtEndCopyOnWriteList(String valueOfCalculation);
+        void setTvInsertAtBeginningCopyOnWriteList(String valueOfCalculation);
 
-        public void setTvFindElementCopyOnWriteList(String valueOfCalculation);
+        void setTvInsertAtMiddleCopyOnWriteList(String valueOfCalculation);
 
-        public void setTvDeleteFirstCopyOnWriteList(String valueOfCalculation);
+        void setTvInsertAtEndCopyOnWriteList(String valueOfCalculation);
 
-        public void setTvDeleteMiddleCopyOnWriteList(String valueOfCalculation);
+        void setTvFindElementCopyOnWriteList(String valueOfCalculation);
 
-        public void setTvDeleteLastCopyOnWriteList(String valueOfCalculation);
+        void setTvDeleteFirstCopyOnWriteList(String valueOfCalculation);
 
-        public void setAddNewInHashMap(String value);
+        void setTvDeleteMiddleCopyOnWriteList(String valueOfCalculation);
 
-        public void setSelectInHashMap(String value);
+        void setTvDeleteLastCopyOnWriteList(String valueOfCalculation);
 
-        public void setRemoveInHashMap(String value);
+        void setAddNewInHashMap(String value);
 
-        public void setAddNewInTreeMap(String value);
+        void setSelectInHashMap(String value);
 
-        public void setSelectInTreeMap(String value);
+        void setRemoveInHashMap(String value);
 
-        public void setRemoveInTreeMap(String value);
+        void setAddNewInTreeMap(String value);
+
+        void setSelectInTreeMap(String value);
+
+        void setRemoveInTreeMap(String value);
+
+        int loadSize();
     }
 
     interface MapPresenter {
@@ -69,19 +71,20 @@ public interface Contract {
 
         void detachView();
 
-        public void calculateAddNewElementToHashMap();
+        void calculateAddNewElementToHashMap();
 
-        public void calculateFindElementInHashMapByKey();
+        void calculateFindElementInHashMapByKey();
 
-        public void calculateRemoveElementInHashMapByKey();
+        void calculateRemoveElementInHashMapByKey();
 
-        public void calculateAddNewElementToTreeMap();
+        void calculateAddNewElementToTreeMap();
 
-        public void calculateFindElementInTreeMapByKey();
+        void calculateFindElementInTreeMapByKey();
 
-        public void calculateRemoveElementInTreeMapByKey();
+        void calculateRemoveElementInTreeMapByKey();
 
         void initializeMap(Integer size);
+
     }
 
     interface Presenter {
@@ -90,53 +93,54 @@ public interface Contract {
         void loadSizeOfLists(int number);
 
 
-        public void setTvInsertAtBeginningArrayList();
+        void setTvInsertAtBeginningArrayList();
 
-        public void setTvInsertAtMiddleArrayList();
+        void setTvInsertAtMiddleArrayList();
 
 
-        public void setTvInsertAtEndArrayList();
+        void setTvInsertAtEndArrayList();
 
 
         void setTvFindElementArrayList();
 
-        public void setTvDeleteFirstArrayList();
+        void setTvDeleteFirstArrayList();
 
-        public void setTvDeleteMiddle();
+        void setTvDeleteMiddle();
 
-        public void setTvDeleteLastElementArrayList();
+        void setTvDeleteLastElementArrayList();
 
-        public void setTvInsertAtBeginningLinkedList();
+        void setTvInsertAtBeginningLinkedList();
 
-        public void setTvInsertAtMiddleLinkList();
+        void setTvInsertAtMiddleLinkList();
 
-        public void setTvInsertAtEndLinkList();
+        void setTvInsertAtEndLinkList();
 
-        public void setTvFindElementLinkList();
+        void setTvFindElementLinkList();
 
-        public void setTvDeleteFirstLinkList();
+        void setTvDeleteFirstLinkList();
 
-        public void setTvDeleteMiddleLinkList();
+        void setTvDeleteMiddleLinkList();
 
-        public void setTvDeleteLastLinkList();
+        void setTvDeleteLastLinkList();
 
-        public void setTvInsertAtBeginningCopyOnWriteList();
+        void setTvInsertAtBeginningCopyOnWriteList();
 
-        public void setTvInsertAtMiddleCopyOnWriteList();
+        void setTvInsertAtMiddleCopyOnWriteList();
 
-        public void setTvInsertAtEndCopyOnWriteList();
+        void setTvInsertAtEndCopyOnWriteList();
 
-        public void setTvFindElementCopyOnWriteList();
+        void setTvFindElementCopyOnWriteList();
 
-        public void setTvDeleteFirstCopyOnWriteList();
+        void setTvDeleteFirstCopyOnWriteList();
 
-        public void setTvDeleteMiddleCopyOnWriteList();
+        void setTvDeleteMiddleCopyOnWriteList();
 
-        public void setTvDeleteLastCopyOnWriteList();
+        void setTvDeleteLastCopyOnWriteList();
 
         void attachView(View view);
 
         void detachView();
+
     }
 
     interface ListModel {
@@ -158,12 +162,12 @@ public interface Contract {
     }
 
 
-    public interface MapModel {
+    interface MapModel {
 
-        public String calculateAddNewElementToMap(Map<Integer, Integer> treeMap) throws ExecutionException, InterruptedException;
+        String calculateAddNewElementToMap(Map<Integer, Integer> treeMap) throws ExecutionException, InterruptedException;
 
-        public String calculateFindElementInMapByKey(Map<Integer, Integer> treeMap) throws ExecutionException, InterruptedException;
+        String calculateFindElementInMapByKey(Map<Integer, Integer> treeMap) throws ExecutionException, InterruptedException;
 
-        public String calculateRemoveElementInMapByKey(Map<Integer, Integer> treeMap) throws ExecutionException, InterruptedException;
+        String calculateRemoveElementInMapByKey(Map<Integer, Integer> treeMap) throws ExecutionException, InterruptedException;
     }
 }

@@ -14,11 +14,9 @@ import java.util.concurrent.ExecutionException;
 
 public final class ListPresenter implements Contract.Presenter {
 
-    private static ListPresenter listPresenter;
-
+    private static volatile ListPresenter listPresenter;
     private Contract.View view;
     private Contract.ListModel model;
-
 
     private List<Integer> arrayList;
     private List<Integer> linkedList;
@@ -30,13 +28,17 @@ public final class ListPresenter implements Contract.Presenter {
 
     public static ListPresenter getListPresenterSingleton() {
 
-        synchronized (ListPresenter.class) {
-            if (listPresenter != null) {
-                return listPresenter;
-            } else {
-                return listPresenter = new ListPresenter();
+        if (listPresenter == null) {
+            synchronized (ListPresenter.class) {
+                listPresenter = new ListPresenter();
+
             }
         }
+        return listPresenter;
+    }
+
+    public Contract.View getView() {
+        return view;
     }
 
 
@@ -325,16 +327,13 @@ public final class ListPresenter implements Contract.Presenter {
 
     @Override
     public void initialzeList(Integer size) {
+
+        Random random = new Random();
         arrayList = new ArrayList<>();
         linkedList = new LinkedList<>();
         writeOnWriteLinkedList = new CopyOnWriteArrayList<>();
-        Random random = new Random();
 
-        for (
-                int i = 0;
-                i < size - 1; i++)
-
-        {
+        for (int i = 0; i < size; i++) {
             arrayList.add(random.nextInt(100_000));
             linkedList.add(random.nextInt(100_000));
             writeOnWriteLinkedList.add(random.nextInt(100_000));
@@ -363,6 +362,5 @@ public final class ListPresenter implements Contract.Presenter {
         model = null;
 
     }
-
 
 }

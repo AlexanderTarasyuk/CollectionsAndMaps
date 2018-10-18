@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 public final class Utils {
 
-    private static ExecutorService executorService;
+    private static volatile ExecutorService executorService;
 
     private Utils() {
     }
@@ -15,13 +15,12 @@ public final class Utils {
     }
 
     public static ExecutorService getExecutorService() {
-        synchronized (Utils.class) {
 
-            if (executorService != null) {
-                return executorService;
-            } else {
-                return Executors.newFixedThreadPool(getNumberOfCores());
+        if (executorService == null) {
+            synchronized (Utils.class) {
+                executorService = Executors.newFixedThreadPool(getNumberOfCores());
             }
         }
+        return executorService;
     }
 }

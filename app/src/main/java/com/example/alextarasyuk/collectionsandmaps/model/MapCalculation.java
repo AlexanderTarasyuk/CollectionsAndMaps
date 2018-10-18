@@ -10,20 +10,19 @@ import java.util.concurrent.ExecutionException;
 
 public final class MapCalculation implements Contract.MapModel {
 
-    private static MapCalculation mapCalculation;
+    private static volatile MapCalculation mapCalculation;
 
     private MapCalculation() {
     }
 
     public static MapCalculation getMapCalculationSingleTon() {
 
-        synchronized (MapCalculation.class) {
-            if (mapCalculation != null) {
-                return mapCalculation;
-            } else {
-                return new MapCalculation();
+        if (mapCalculation == null) {
+            synchronized (MapCalculation.class) {
+                mapCalculation = new MapCalculation();
             }
         }
+        return mapCalculation;
     }
 
     @Override
