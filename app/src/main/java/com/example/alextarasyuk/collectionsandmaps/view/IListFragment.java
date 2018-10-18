@@ -2,48 +2,48 @@ package com.example.alextarasyuk.collectionsandmaps.view;
 
 public interface IListFragment {
 
-    public void setTvInsertAtBeginningArrayList(String valueOfCalculation);
+    void setTvInsertAtBeginningArrayList(String valueOfCalculation);
 
-    public void setTvInsertAtMiddleArrayList(String valueOfCalculation);
-
-
-    public void setTvInsertAtEndArrayList(String valueOfCalculation);
+    void setTvInsertAtMiddleArrayList(String valueOfCalculation);
 
 
-    public void setTvFindElementArrayList(String valueOfCalculation);
+    void setTvInsertAtEndArrayList(String valueOfCalculation);
 
 
-    public void setTvDeleteFirstArrayList(String valueOfCalculation);
+    void setTvFindElementArrayList(String valueOfCalculation);
 
-    public void setTvDeleteMiddleArrayList(String valueOfCalculation);
 
-    public void setTvDeleteLastElementArrayList(String valueOfCalculation);
+    void setTvDeleteFirstArrayList(String valueOfCalculation);
 
-    public void setTvInsertAtBeginningLinkedList(String valueOfCalculation);
+    void setTvDeleteMiddleArrayList(String valueOfCalculation);
 
-    public void setTvInsertAtMiddleLinkList(String valueOfCalculation);
+    void setTvDeleteLastElementArrayList(String valueOfCalculation);
 
-    public void setTvInsertAtEndLinkList(String valueOfCalculation);
+    void setTvInsertAtBeginningLinkedList(String valueOfCalculation);
 
-    public void setTvFindElementLinkList(String valueOfCalculation);
+    void setTvInsertAtMiddleLinkList(String valueOfCalculation);
 
-    public void setTvDeleteFirstLinkList(String valueOfCalculation);
+    void setTvInsertAtEndLinkList(String valueOfCalculation);
 
-    public void setTvDeleteMiddleLinkList(String valueOfCalculation);
+    void setTvFindElementLinkList(String valueOfCalculation);
 
-    public void setTvDeleteLastLinkList(String valueOfCalculation);
+    void setTvDeleteFirstLinkList(String valueOfCalculation);
 
-    public void setTvInsertAtBeginningCopyOnWriteList(String valueOfCalculation);
+    void setTvDeleteMiddleLinkList(String valueOfCalculation);
 
-    public void setTvInsertAtMiddleCopyOnWriteList(String valueOfCalculation);
+    void setTvDeleteLastLinkList(String valueOfCalculation);
 
-    public void setTvInsertAtEndCopyOnWriteList(String valueOfCalculation);
+    void setTvInsertAtBeginningCopyOnWriteList(String valueOfCalculation);
 
-    public void setTvFindElementCopyOnWriteList(String valueOfCalculation);
+    void setTvInsertAtMiddleCopyOnWriteList(String valueOfCalculation);
 
-    public void setTvDeleteFirstCopyOnWriteList(String valueOfCalculation);
+    void setTvInsertAtEndCopyOnWriteList(String valueOfCalculation);
 
-    public void setTvDeleteMiddleCopyOnWriteList(String valueOfCalculation);
+    void setTvFindElementCopyOnWriteList(String valueOfCalculation);
 
-    public void setTvDeleteLastCopyOnWriteList(String valueOfCalculation);
+    void setTvDeleteFirstCopyOnWriteList(String valueOfCalculation);
+
+    void setTvDeleteMiddleCopyOnWriteList(String valueOfCalculation);
+
+    void setTvDeleteLastCopyOnWriteList(String valueOfCalculation);
 }

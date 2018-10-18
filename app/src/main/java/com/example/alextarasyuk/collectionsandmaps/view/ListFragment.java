@@ -69,7 +69,6 @@ public class ListFragment extends Fragment implements IListFragment {
     TextView tvDeleteLastCopyOnWriteList;
     Bundle bundle;
 
-
     private Unbinder unbinder;
 
     public static ListFragment newInstance() {

@@ -11,19 +11,18 @@ import java.util.concurrent.ExecutionException;
 
 public final class MapPresenter implements Contract.MapPresenter {
     private Contract.View view;
+    private Contract.MapModel mapModel;
+
     private Map<Integer, Integer> hashMap;
     private Map<Integer, Integer> treeMap;
+
     private static volatile MapPresenter mapPresenter;
 
     public Contract.View getView() {
         return view;
     }
 
-    private Contract.MapModel mapModel;
-
-
     private MapPresenter() {
-
         mapModel = MapCalculation.getMapCalculationSingleTon();
     }
 

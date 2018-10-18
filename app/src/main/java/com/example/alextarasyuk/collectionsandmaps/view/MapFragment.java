@@ -12,8 +12,6 @@ import android.widget.TextView;
 import com.example.alextarasyuk.collectionsandmaps.R;
 import com.example.alextarasyuk.collectionsandmaps.presenter.ListPresenter;
 
-import java.util.Queue;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -33,7 +31,6 @@ public class MapFragment extends Fragment implements IMapFragment {
     TextView tvRemovingTreeMap;
     @BindView(R.id.tv_select_by_key_tree_map)
     TextView tvSelectTreeMap;
-    Queue<Long> queue;
     ListPresenter presenter;
     Unbinder unbinder;
 
