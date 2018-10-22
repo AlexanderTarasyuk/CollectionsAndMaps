@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
     Button btn;
     @BindView(R.id.edt_text)
     EditText editText;
-
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
         setContentView(R.layout.activity_main);
         unbinder = ButterKnife.bind(this);
 
-        DaggerPresenterComponent.builder().build().provide(this);
+        DaggerPresenterComponent.builder().build().inject(this);
 
 
 //        listPresenter = ListPresenterImpl.getListPresenterSingleton();
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
             }
         }).start();
 
-//        listFragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_collections);
+        listFragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_collections);
         mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_maps);
 
 
