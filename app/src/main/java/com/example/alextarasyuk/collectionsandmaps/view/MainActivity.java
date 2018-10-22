@@ -11,8 +11,9 @@ import android.widget.ProgressBar;
 import com.example.alextarasyuk.collectionsandmaps.BuildConfig;
 import com.example.alextarasyuk.collectionsandmaps.R;
 import com.example.alextarasyuk.collectionsandmaps.contract.Contract;
-import com.example.alextarasyuk.collectionsandmaps.presenter.ListPresenter;
-import com.example.alextarasyuk.collectionsandmaps.presenter.MapPresenter;
+import com.example.alextarasyuk.collectionsandmaps.di.DaggerPresenterComponent;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,9 +31,10 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
-
-    private Contract.Presenter listPresenter;
-    private Contract.MapPresenter mapPresenter;
+    @Inject
+    Contract.ListPresenter listPresenter;
+    @Inject
+    Contract.MapPresenter mapPresenter;
 
     private ListFragment listFragment;
     private MapFragment mapFragment;
@@ -46,11 +48,13 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
         setContentView(R.layout.activity_main);
         unbinder = ButterKnife.bind(this);
 
-        listPresenter = ListPresenter.getListPresenterSingleton();
+        DaggerPresenterComponent.builder().build().provide(this);
+
+
+//        listPresenter = ListPresenterImpl.getListPresenterSingleton();
         listPresenter.attachView(this);
 
-
-        mapPresenter = MapPresenter.getMapPresenterSingleton();
+//        mapPresenter = MapPresenterImpl.getMapPresenterSingleton();
         mapPresenter.attachView(this);
 
         new Thread(new Runnable() {
@@ -62,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
             }
         }).start();
 
-        listFragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_collections);
+//        listFragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_collections);
         mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_maps);
 
 

@@ -12,9 +12,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutionException;
 
 
-public final class ListPresenter implements Contract.Presenter {
+public final class ListPresenterImpl implements Contract.ListPresenter {
 
-    private static volatile ListPresenter listPresenter;
+    //    private static volatile ListPresenterImpl listPresenter;
     private Contract.View view;
     private Contract.ListModel model;
 
@@ -22,20 +22,20 @@ public final class ListPresenter implements Contract.Presenter {
     private List<Integer> linkedList;
     private List<Integer> writeOnWriteLinkedList;
 
-    private ListPresenter() {
+    public ListPresenterImpl() {
         model = ListCalculation.getListCalculationSingleton();
     }
 
-    public static ListPresenter getListPresenterSingleton() {
-
-        if (listPresenter == null) {
-            synchronized (ListPresenter.class) {
-                listPresenter = new ListPresenter();
-
-            }
-        }
-        return listPresenter;
-    }
+//    public static ListPresenterImpl getListPresenterSingleton() {
+//
+//        if (listPresenter == null) {
+//            synchronized (ListPresenterImpl.class) {
+//                listPresenter = new ListPresenterImpl();
+//
+//            }
+//        }
+//        return listPresenter;
+//    }
 
     public Contract.View getView() {
         return view;

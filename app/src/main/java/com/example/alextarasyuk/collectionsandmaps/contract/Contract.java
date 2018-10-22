@@ -87,7 +87,7 @@ public interface Contract {
 
     }
 
-    interface Presenter {
+    interface ListPresenter {
         void initialzeList(Integer size);
 
         void loadSizeOfLists(int number);

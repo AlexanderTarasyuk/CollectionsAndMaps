@@ -9,31 +9,31 @@ import java.util.Random;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutionException;
 
-public final class MapPresenter implements Contract.MapPresenter {
+public final class MapPresenterImpl implements Contract.MapPresenter {
     private Contract.View view;
     private Contract.MapModel mapModel;
 
     private Map<Integer, Integer> hashMap;
     private Map<Integer, Integer> treeMap;
 
-    private static volatile MapPresenter mapPresenter;
+//    private static volatile MapPresenterImpl mapPresenter;
 
     public Contract.View getView() {
         return view;
     }
 
-    private MapPresenter() {
+    public MapPresenterImpl() {
         mapModel = MapCalculation.getMapCalculationSingleTon();
     }
 
-    public static MapPresenter getMapPresenterSingleton() {
-        if (mapPresenter == null) {
-            synchronized (MapPresenter.class) {
-                mapPresenter = new MapPresenter();
-            }
-        }
-        return mapPresenter;
-    }
+//    public static MapPresenterImpl getMapPresenterSingleton() {
+//        if (mapPresenter == null) {
+//            synchronized (MapPresenterImpl.class) {
+//                mapPresenter = new MapPresenterImpl();
+//            }
+//        }
+//        return mapPresenter;
+//    }
 
 
     @Override

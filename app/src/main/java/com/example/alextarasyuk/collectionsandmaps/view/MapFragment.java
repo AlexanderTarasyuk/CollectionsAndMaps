@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.alextarasyuk.collectionsandmaps.R;
-import com.example.alextarasyuk.collectionsandmaps.presenter.ListPresenter;
+import com.example.alextarasyuk.collectionsandmaps.presenter.ListPresenterImpl;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,7 +31,7 @@ public class MapFragment extends Fragment implements IMapFragment {
     TextView tvRemovingTreeMap;
     @BindView(R.id.tv_select_by_key_tree_map)
     TextView tvSelectTreeMap;
-    ListPresenter presenter;
+    ListPresenterImpl presenter;
     Unbinder unbinder;
 
     public MapFragment() {
