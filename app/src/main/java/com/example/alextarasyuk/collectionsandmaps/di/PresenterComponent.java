@@ -7,10 +7,12 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 
-@Component(modules = PresenterModule.class)
+@Component(modules = {PresenterModule.class})
 @Singleton
 public interface PresenterComponent {
 
-    void provide(MainActivity mainActivity);
+     void provide(MainActivity mainActivity);
+
+
 
 }

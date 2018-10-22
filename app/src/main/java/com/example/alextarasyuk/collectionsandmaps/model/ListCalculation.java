@@ -8,6 +8,9 @@ import com.example.alextarasyuk.collectionsandmaps.contract.Contract;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import io.reactivex.Flowable;
+import io.reactivex.schedulers.Schedulers;
+
 public final class ListCalculation implements Contract.ListModel {
 
     private static volatile ListCalculation listCalculation;
@@ -29,6 +32,8 @@ public final class ListCalculation implements Contract.ListModel {
 
     @Override
     public String calculateInsertAtTheBeginning(List<Integer> list) throws ExecutionException, InterruptedException {
+        Flowable flowable = Flowable.fromArray(list);
+        flowable.observeOn(Schedulers.computation());
         InsertAddTheBeginning task = new InsertAddTheBeginning();
 
         return task.executeOnExecutor(Utils.getExecutorService(), list).get();
